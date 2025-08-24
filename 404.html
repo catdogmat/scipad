@@ -34,7 +34,7 @@
       const parts = path.split("/").filter(Boolean);
 
       // load the JSON
-      const res = await fetch("/data.json");
+      const res = await fetch("data.json");
       const data = await res.json();
 
       const app = document.getElementById("app");
