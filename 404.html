@@ -36,6 +36,7 @@
       // load JSON
       const res = await fetch("data.json"); // relative, so it works on GitHub Pages
       const data = await res.json();
+      console.log(data);
 
       const app = document.getElementById("app");
 
