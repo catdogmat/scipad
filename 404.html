@@ -30,21 +30,37 @@
 
   <script>
     async function init() {
+      // strip slashes from start & end
       const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
-      const parts = path.split("/").filter(Boolean);
-
-      // load the JSON
-      const res = await fetch("data.json");
+      
+      // load JSON
+      const res = await fetch("data.json"); // relative, so it works on GitHub Pages
       const data = await res.json();
 
       const app = document.getElementById("app");
 
-      if (parts.length === 0) {
+      if (!path) {
         app.innerHTML = "<p>No subject chosen. Try /bc1, /c2, /pess1, /ess3</p>";
         return;
       }
 
-      const subjectKey = parts[0];
+      // check if path contains a dot
+      if (path.includes(".")) {
+        const [subjectKey, pageId] = path.split(".");
+        const subject = data[subjectKey];
+        if (subject) {
+          const page = subject.pages.find(p => p.id === pageId);
+          if (page) {
+            window.location.href = page.url;
+            return;
+          }
+        }
+        app.innerHTML = "<p>Page not found.</p>";
+        return;
+      }
+
+      // first-level subject page
+      const subjectKey = path;
       const subject = data[subjectKey];
 
       if (!subject) {
@@ -52,24 +68,11 @@
         return;
       }
 
-      // Second level -> redirect
-      if (parts.length > 1) {
-        const pageId = parts[1];
-        const page = subject.pages.find(p => p.id === pageId);
-        if (page) {
-          window.location.href = page.url;
-        } else {
-          app.innerHTML = "<p>Page not found in subject.</p>";
-        }
-        return;
-      }
-
-      // First level -> show subject info
       document.body.style.backgroundColor = subject.color;
       app.innerHTML = `
         <h1>${subject.title}</h1>
         <ul>
-          ${subject.pages.map(p => `<li><a href="${p.url}">${p.title}</a></li>`).join("")}
+          ${subject.pages.map(p => `<li><a href="${subjectKey}.${p.id}">${p.title}</a></li>`).join("")}
         </ul>
       `;
     }
