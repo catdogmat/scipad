@@ -1,5 +1,80 @@
-<head></head>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Textbook Router</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      color: #fff;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
-greetings. this is the four-hundred-and-four page of this fine webpage.
+  <div id="app">Loading...</div>
+
+  <script>
+    async function init() {
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+      const parts = path.split("/").filter(Boolean);
+
+      // load the JSON
+      const res = await fetch("/data.json");
+      const data = await res.json();
+
+      const app = document.getElementById("app");
+
+      if (parts.length === 0) {
+        app.innerHTML = "<p>No subject chosen. Try /bc1, /c2, /pess1, /ess3</p>";
+        return;
+      }
+
+      const subjectKey = parts[0];
+      const subject = data[subjectKey];
+
+      if (!subject) {
+        app.innerHTML = "<p>Unknown subject.</p>";
+        return;
+      }
+
+      // Second level -> redirect
+      if (parts.length > 1) {
+        const pageId = parts[1];
+        const page = subject.pages.find(p => p.id === pageId);
+        if (page) {
+          window.location.href = page.url;
+        } else {
+          app.innerHTML = "<p>Page not found in subject.</p>";
+        }
+        return;
+      }
+
+      // First level -> show subject info
+      document.body.style.backgroundColor = subject.color;
+      app.innerHTML = `
+        <h1>${subject.title}</h1>
+        <ul>
+          ${subject.pages.map(p => `<li><a href="${p.url}">${p.title}</a></li>`).join("")}
+        </ul>
+      `;
+    }
+
+    init();
+  </script>
 </body>
+</html>
