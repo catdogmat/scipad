@@ -1,0 +1,86 @@
+{
+  "bc1": {
+    "title": "Business Core 1",
+    "color": "#FF5733",
+    "pages": [
+      {
+        "id": "1",
+        "title": "Introduction to BC1",
+        "url": "https://example.com/textbook/bc1/1"
+      },
+      {
+        "id": "6",
+        "title": "Advanced BC1",
+        "url": "https://example.com/textbook/bc1/6"
+      },
+      {
+        "id": "ext",
+        "title": "Extra Resources for BC1",
+        "url": "https://example.com/textbook/bc1/ext"
+      }
+    ]
+  },
+  "c2": {
+    "title": "Core 2",
+    "color": "#33C1FF",
+    "pages": [
+      {
+        "id": "1",
+        "title": "C2 Basics",
+        "url": "https://example.com/textbook/c2/1"
+      },
+      {
+        "id": "6",
+        "title": "C2 Advanced",
+        "url": "https://example.com/textbook/c2/6"
+      },
+      {
+        "id": "ext",
+        "title": "Extra C2 Materials",
+        "url": "https://example.com/textbook/c2/ext"
+      }
+    ]
+  },
+  "pess1": {
+    "title": "Physical Education SS1",
+    "color": "#8E44AD",
+    "pages": [
+      {
+        "id": "1",
+        "title": "PESS1 Overview",
+        "url": "https://example.com/textbook/pess1/1"
+      },
+      {
+        "id": "6",
+        "title": "PESS1 Deep Dive",
+        "url": "https://example.com/textbook/pess1/6"
+      },
+      {
+        "id": "ext",
+        "title": "PESS1 External Links",
+        "url": "https://example.com/textbook/pess1/ext"
+      }
+    ]
+  },
+  "ess3": {
+    "title": "Environmental SS3",
+    "color": "#27AE60",
+    "pages": [
+      {
+        "id": "1",
+        "title": "ESS3 Getting Started",
+        "url": "https://example.com/textbook/ess3/1"
+      },
+      {
+        "id": "6",
+        "title": "ESS3 Guide",
+        "url": "https://example.com/textbook/ess3/6"
+      },
+      {
+        "id": "ext",
+        "title": "ESS3 Extensions",
+        "url": "https://example.com/textbook/ess3/ext"
+      }
+    ]
+  }
+}
