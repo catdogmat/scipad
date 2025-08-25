@@ -77,7 +77,7 @@
     "title": "Physics Level 3",
     "subject": "Physics",
     "year": "3",
-    "color": "#2ECC71",
+    "color": "#3f0f7b",
     "pages": [
       {
         "id": "ext",
@@ -110,7 +110,7 @@
     "title": "Physics, Earth and Space Science Level 1",
     "subject": "Physics, Earth and Space Science",
     "year": "1",
-    "color": "#F1C40F",
+    "color": "#000000",
     "pages": [
       {
         "id": "2",
