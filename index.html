@@ -212,11 +212,11 @@
         }
         #footer a {
             color: #007bff;
-            transition: color 0.5s ease;
+            text-decoration: none; /* Remove underline globally */
+            transition: color 0.2s ease;
         }
-        /* HOVER EFFECT ADDED */
         #footer a:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Add back for homepage */
         }
     </style>
 </head>
@@ -322,6 +322,10 @@
             footer.style.backgroundColor = 'whitesmoke';
             footerText.style.color = 'black';
             footerLink.style.color = '#007bff';
+            footerLink.style.textDecoration = 'none'; // Ensure no underline
+            footerLink.onmouseover = () => footerLink.style.textDecoration = 'underline'; // Add underline on hover
+            footerLink.onmouseout = () => footerLink.style.textDecoration = 'none'; // Remove on mouseout
+
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
@@ -406,7 +410,13 @@
             document.body.style.backgroundColor = subjectColor;
             footer.style.backgroundColor = cardAndFooterBg;
             footerText.style.color = subjectColor;
-            footerLink.style.color = linkColor;
+            footerLink.style.color = subjectColor; // Set default color to subject color
+            footerLink.style.textDecoration = 'none'; // Ensure no underline
+
+            // **NEW**: Add hover events for footer link
+            footerLink.onmouseover = () => footerLink.style.color = linkColor;
+            footerLink.onmouseout = () => footerLink.style.color = subjectColor;
+
 
             app.innerHTML = ''; 
 
@@ -434,7 +444,6 @@
             `;
             app.appendChild(contentDiv);
 
-            // --- ADDING HOVER EVENT LISTENERS ---
             backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
             backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
 
