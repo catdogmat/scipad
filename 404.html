@@ -305,13 +305,74 @@
          * @returns {string} A new hex color for links.
          */
         function generateLinkColor(baseHex, cardBgHex) {
-            const [h, s, l] = hexToHsl(baseHex);
-            const isCardBgLight = getTextColorForBg(cardBgHex) === '#333333';
-            const newHue = (h + 140) % 360; // Rotate hue for a distinct tone
-            const newSaturation = 85; // Keep it vibrant
-            // Force lightness into a safe range for contrast against the card background
-            const newLightness = isCardBgLight ? 45 : 75;
-            return hslToHex(newHue, newSaturation, newLightness);
+            // Robustness: fallback color
+            const fallbackDark = '#2563eb'; // good, medium blue for light backgrounds
+            const fallbackLight = '#93c5fd'; // lighter blue for dark backgrounds
+
+            if (!baseHex) return fallbackDark;
+            // ensure cardBgHex is a hex; if not, default to white
+            if (!cardBgHex || cardBgHex[0] !== '#') cardBgHex = '#ffffff';
+
+            // helpers
+            function hexToRgb(hex) {
+                if (!hex) return null;
+                if (hex.length === 4) {
+                    return {
+                        r: parseInt(hex[1] + hex[1], 16),
+                        g: parseInt(hex[2] + hex[2], 16),
+                        b: parseInt(hex[3] + hex[3], 16)
+                    };
+                }
+                return {
+                    r: parseInt(hex.substr(1, 2), 16),
+                    g: parseInt(hex.substr(3, 2), 16),
+                    b: parseInt(hex.substr(5, 2), 16)
+                };
+            }
+
+            function relLuminance({ r, g, b }) {
+                // convert sRGB 0..255 to linearized 0..1
+                const srgb = [r, g, b].map(v => v / 255).map(c => (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+                return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
+            }
+
+            function contrastRatio(hex1, hex2) {
+                const rgb1 = hexToRgb(hex1);
+                const rgb2 = hexToRgb(hex2);
+                if (!rgb1 || !rgb2) return 1;
+                const L1 = relLuminance(rgb1);
+                const L2 = relLuminance(rgb2);
+                const lighter = Math.max(L1, L2);
+                const darker = Math.min(L1, L2);
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+
+            try {
+                const [h, sRaw] = hexToHsl(baseHex);
+                // Choose a moderate saturation (avoid neon) and a hue moved away from the base
+                const sat = Math.min(65, Math.max(38, Math.round(sRaw)));
+                const hue = (h + 160) % 360; // move to a distinct but related hue
+
+                // Determine whether card background is light or dark (use existing helper)
+                const cardBgIsLight = getTextColorForBg(cardBgHex) === '#333333';
+
+                // Start lightness values: for light card bg, link should be darker; for dark card bg, link should be lighter
+                let light = cardBgIsLight ? 28 : 70;
+
+                // Iterate to find a lightness that meets WCAG contrast >= 4.5:1 (normal text)
+                const targetContrast = 4.5;
+                for (let i = 0; i < 12; i++) {
+                    const candidateHex = hslToHex(hue, sat, Math.round(light));
+                    if (contrastRatio(candidateHex, cardBgHex) >= targetContrast) return candidateHex;
+                    // Adjust lightness towards better contrast
+                    if (cardBgIsLight) light -= 6; else light += 6;
+                }
+
+                // If iterative search failed, fall back to safe blues depending on bg
+                return cardBgIsLight ? fallbackDark : fallbackLight;
+            } catch (e) {
+                return fallbackDark;
+            }
         }
 
         function renderError(mainContainer, message) {
