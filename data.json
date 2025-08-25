@@ -14,6 +14,11 @@
         "id": "int",
         "title": "Biology Internals",
         "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(int)/Level%202%20Biology%20Internals.html"
+      },
+      {
+        "id": "2.4",
+        "title": "Biology 2.4 Micro",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(micros)/Biology%202.4%20sciPAD%20Micro/Biology%202.4%20sciPAD%20Micro.html"
       }
     ]
   },
@@ -98,6 +103,29 @@
         "id": "3.6",
         "title": "Physics 3.6",
         "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/physics%203.6%20scipad%20micro%20answers/Physics%203.6%20sciPAD%20Micro%20Answers.html"
+      }
+    ]
+  },
+  "PES1": {
+    "title": "Physics Earth and Space Science Level 1",
+    "subject": "physics-earth-space-science",
+    "year": "1",
+    "color": "#F1C40F",
+    "pages": [
+      {
+        "id": "1.2",
+        "title": "Physics Earth and Space Science 1.2",
+        "url": "https://scipad.co.nz/answers/PES1.2/PES1.2_answers.html"
+      },
+      {
+        "id": "1.3",
+        "title": "Physics Earth and Space Science 1.3",
+        "url": "https://scipad.co.nz/answers/PES1.3/PES1.3_answers.html"
+      },
+      {
+        "id": "1.4",
+        "title": "Physics Earth and Space Science 1.4",
+        "url": "https://scipad.co.nz/answers/PES1.4/PES1.4_answers.html"
       }
     ]
   }
