@@ -213,7 +213,7 @@
                     ${uniqueSubjects.map(subject => `<button class="filter-btn" data-filter-type="subject" data-filter-value="${subject}">${subject}</button>`).join('')}
                 </div>
                 <div>
-                    <strong>Year Level:</strong>
+                    <strong>Level:</strong>
                     ${uniqueYears.map(year => `<button class="filter-btn" data-filter-type="year" data-filter-value="${year}">${year}</button>`).join('')}
                 </div>
             `;
@@ -239,7 +239,7 @@
                         card.style.borderLeftColor = category.color;
                         card.innerHTML = `
                             <h3>${category.title}</h3>
-                            <p>${category.subject} - Year ${category.year}</p>
+                            <p>${category.subject} - Level ${category.year}</p>
                         `;
                         resultsContainer.appendChild(card);
                     }
