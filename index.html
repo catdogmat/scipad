@@ -195,14 +195,12 @@
 
             let activeFilters = { subject: 'All', year: 'All' };
             const allCategories = Object.values(data);
-
             const subjectSelect = document.getElementById('subject-select');
             const levelSelect = document.getElementById('level-select');
 
             function updateAndRender() {
                 const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
                 const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
-
                 const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
                 const availableLevels = ['All', ...new Set(availableBasedOnSubject.map(cat => cat.year)).sort()];
 
@@ -229,6 +227,7 @@
             }
             
             function populateSelect(selectElement, options, selectedValue) {
+                const currentValue = selectElement.value;
                 selectElement.innerHTML = '';
                 options.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -236,9 +235,15 @@
                     optionElement.textContent = option;
                     selectElement.appendChild(optionElement);
                 });
-                selectElement.value = selectedValue;
+                // Try to preserve the previous selection if it's still a valid option
+                if (options.includes(currentValue)) {
+                    selectElement.value = currentValue;
+                } else {
+                    selectElement.value = selectedValue;
+                }
             }
-
+            
+            // *** LINES THAT WERE MISSING ARE RESTORED HERE ***
             subjectSelect.addEventListener('change', (e) => {
                 activeFilters.subject = e.target.value;
                 updateAndRender();
@@ -249,7 +254,7 @@
                 updateAndRender();
             });
 
-            updateAndRender();
+            updateAndRender(); // Initial call to render the content
         }
 
         function renderCategoryPage(categoryData) {
@@ -292,10 +297,9 @@
 
             const path = window.location.pathname.slice(1).toUpperCase();
             
-            // Route 1: Standard redirect (e.g., /P3.4)
             if (path.includes('.')) {
                 if (handleStandardRedirect(path, data)) {
-                    return; // Redirecting...
+                    return; 
                 } else {
                     renderError(`The standard '${path}' could not be found.`);
                     renderHomePage(data);
@@ -303,19 +307,16 @@
                 }
             }
 
-            // Route 2: Root URL (e.g., /)
             if (path === '') {
                 renderHomePage(data);
                 return;
             }
 
-            // Route 3: Category page (e.g., /P3)
             if (data[path]) {
                 renderCategoryPage(data[path]);
                 return;
             }
 
-            // Route 4: Invalid path
             renderError(`The page or category '${path}' does not exist.`);
             renderHomePage(data);
         }
