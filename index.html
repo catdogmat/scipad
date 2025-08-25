@@ -568,8 +568,8 @@
                 backLink.className = 'back-link';
                 backLink.textContent = '‹ Back to All Subjects';
                 // Use black or white depending on page text/background contrast so the back link is always clear
-                const backDefaultColor = (pageTextColor === '#333333') ? '#111827' : '#f8fafc';
-                const backHoverColor = (pageTextColor === '#333333') ? '#000000' : '#ffffff';
+                const backDefaultColor = (pageTextColor === '#333333') ? '#000000' : '#ffffff';
+                const backHoverColor = (pageTextColor === '#333333') ? '#111827' : '#f8fafc';
                 backLink.style.color = backDefaultColor;
                 backLink.addEventListener('mouseover', () => backLink.style.color = backHoverColor);
                 backLink.addEventListener('mouseout', () => backLink.style.color = backDefaultColor);
