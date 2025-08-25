@@ -25,6 +25,8 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
+            /* Add padding-bottom to prevent content from hiding behind the fixed footer */
+            padding-bottom: 80px;
             transition: background-color 0.5s ease;
         }
 
@@ -98,7 +100,6 @@
             color: var(--text-color);
             transition: transform 0.2s, box-shadow 0.2s;
             border-left: 5px solid;
-            /* Will be colored by JS */
         }
 
         .category-card:hover {
@@ -130,7 +131,6 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-decoration: none;
-            color: var(--primary-color);
             font-weight: bold;
             font-size: 1.2em;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -145,19 +145,28 @@
             display: inline-block;
             margin-bottom: 20px;
             font-weight: bold;
-            color: var(--primary-color);
             text-decoration: none;
         }
 
         #footer {
             position: fixed;
-            left: 0px;
-            bottom: 0px;
-            height: 60px;
+            left: 0;
+            bottom: 0;
             width: 100%;
             background: whitesmoke;
-            padding-bottom: 5px;
             font-size: 0.8em;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        #footer p {
+            text-align: center;
+            color: black;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0 15px;
+        }
+        #footer a {
+            color: #007bff;
         }
     </style>
 </head>
@@ -165,7 +174,7 @@
 <body>
     <div id="app"></div>
     <div id="footer">
-        <p style="text-align:center; color: black; line-height: 30px; margin:0;">This site is not affiliated with
+        <p>This site is not affiliated with
             Silverback Academic Media or the official Scipad books. We do not host or distribute Scipad content.
             Scipad is a registered trademark of Silverback Academic Media and is referenced here under fair use for
             identification purposes only. <a href="/about">Learn about our mission.</a></p>
@@ -173,6 +182,9 @@
 
     <script>
         const app = document.getElementById('app');
+        const footer = document.getElementById('footer');
+        const footerText = footer.querySelector('p');
+        const footerLink = footer.querySelector('a');
 
         async function fetchData() {
             try {
@@ -186,6 +198,21 @@
             }
         }
 
+        /**
+         * Determines the best contrasting text color (dark or light) for a given background hex color.
+         * @param {string} hexcolor - The background color in hex format (e.g., "#FF5733").
+         * @returns {string} The ideal text color, either "#333333" (dark gray) or "#FFFFFF" (white).
+         */
+        function getTextColorForBg(hexcolor) {
+            if (!hexcolor) return '#333333';
+            const r = parseInt(hexcolor.substr(1, 2), 16);
+            const g = parseInt(hexcolor.substr(3, 2), 16);
+            const b = parseInt(hexcolor.substr(5, 2), 16);
+            // Formula for perceived brightness (YIQ)
+            const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return (yiq >= 149) ? '#333333' : '#FFFFFF';
+        }
+
         function renderError(message) {
             const errorContainer = document.createElement('div');
             errorContainer.id = 'error-container';
@@ -196,6 +223,10 @@
 
         function renderHomePage(data) {
             document.body.style.backgroundColor = 'var(--bg-color)';
+            // Reset footer text color for homepage
+            footerText.style.color = 'black';
+            footerLink.style.color = '#007bff';
+
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
@@ -228,9 +259,6 @@
                 const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
 
                 const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
-
-                // *** THIS IS THE CORRECTED LINE ***
-                // First, create an array from the Set, then sort it.
                 const uniqueLevels = [...new Set(availableBasedOnSubject.map(cat => cat.year))].sort();
                 const availableLevels = ['All', ...uniqueLevels];
 
@@ -286,15 +314,19 @@
         }
 
         function renderCategoryPage(categoryData) {
-            app.innerHTML = '';
+            const textColor = getTextColorForBg(categoryData.color);
+
             document.body.style.backgroundColor = categoryData.color;
+            footerText.style.color = textColor;
+            footerLink.style.color = textColor;
+
             app.innerHTML = `
-                <a href="/" class="back-link">‹ Back to All Subjects</a>
-                <h1>${categoryData.title}</h1>
+                <a href="/" class="back-link" style="color: ${textColor};">‹ Back to All Subjects</a>
+                <h1 style="color: ${textColor};">${categoryData.title}</h1>
                 <ul class="standards-list">
                     ${categoryData.pages.map(page => `
                         <li class="standard-item">
-                            <a href="${page.url}" target="_blank" rel="noopener noreferrer">${page.title}</a>
+                            <a href="${page.url}" target="_blank" rel="noopener noreferrer" style="color: ${categoryData.color};">${page.title}</a>
                         </li>
                     `).join('')}
                 </ul>
