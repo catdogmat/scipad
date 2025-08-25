@@ -125,7 +125,7 @@
     "title": "Biology Level 3",
     "subject": "Biology",
     "year": "3",
-    "color": "#08ac34"
+    "color": "#08ac34",
     "pages": [
       {
         "id": "ext",
@@ -158,7 +158,7 @@
     "title": "Chemistry Level 3",
     "subject": "Chemistry",
     "year": "3",
-    "color": "#f89c04"
+    "color": "#f89c04",
     "pages": [
       {
         "id": "ext",
