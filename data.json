@@ -71,21 +71,21 @@
         "title": "Chemistry Internals",
         "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(int)/Level%202%20Chemistry%20Internals.html"
       },
-       {
+      {
         "id": "4",
         "title": "2.4 | Bonding & Structure",
         "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.4%20sciPAD%20Micro/Chemistry%202.4%20sciPAD%20Micro.html#p=1"
       },
-       {
+      {
         "id": "5",
         "title": "2.5 | Organic",
         "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.5%20sciPAD%20Micro/Chemistry%202.5%20sciPAD%20Micro.html#p=1"
       },
-       {
+      {
         "id": "6",
         "title": "2.6 | Reactivity",
         "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.6%20sciPAD%20Micro/Chemistry%202.6%20sciPAD%20Micro.html#p=1"
-      },
+      }
     ]
   },
   "P2": {
@@ -154,7 +154,7 @@
       }
     ]
   },
-   "C3": {
+  "C3": {
     "title": "Chemistry Level 3",
     "subject": "Chemistry",
     "year": "3",
