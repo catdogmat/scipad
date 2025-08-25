@@ -6,251 +6,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sciPAD Answers</title>
 
-    
-<!-- Adobe Fonts -->
-<link rel="stylesheet" href="https://use.typekit.net/ctk0oqa.css">
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/ctk0oqa.css">
 
-<!-- Font Awesome for icons -->
-<script src="https://kit.fontawesome.com/635c80d725.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/635c80d725.js" crossorigin="anonymous"></script>
 
-<style>
-    :root {
-        --bg-color: #f4f4f9;
-        --text-color: #333;
-        --primary-color: #007bff;
-        --card-bg: #ffffff;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        --border-radius: 8px;
-    }
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
 
-    body {
-        font-family: 'proxima-nova', sans-serif;
-        font-weight: 500;
-        font-feature-settings: "ss04" on;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        margin: 0;
-        padding: 20px;
-        padding-bottom: 80px;
-        transition: background-color 0.5s ease;
-    }
+        body {
+            font-family: 'proxima-nova', sans-serif;
+            font-weight: 500;
+            font-feature-settings: "ss04" on;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            padding-bottom: 80px;
+            transition: background-color 0.5s ease;
+        }
 
-    #app {
-        max-width: 900px;
-        margin: 0 auto;
-    }
+        #app {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .app-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        min-height: 48px;
-    }
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            min-height: 48px;
+        }
 
-    .header-split {
-        justify-content: space-between;
-    }
+        .header-split {
+            justify-content: space-between;
+        }
 
-    .header-center {
-        justify-content: center;
-    }
+        .header-center {
+            justify-content: center;
+        }
 
-    .logodiv a {
-        text-decoration: none;
-        color: inherit;
-    }
+        .logodiv a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .logo {
-        transition: color 0.2s ease;
-    }
+        .logo {
+            transition: color 0.2s ease;
+        }
 
-    .logo-large {
-        font-size: 2.5rem;
-    }
+        .logo-large {
+            font-size: 2.5rem;
+        }
 
-    .logo-small {
-        font-size: 1.5rem;
-    }
+        .logo-small {
+            font-size: 1.5rem;
+        }
 
-    .l1 {
-        font-weight: 900;
-    }
+        .l1 {
+            font-weight: 900;
+        }
 
-    .l2 {
-        font-weight: 500;
-    }
+        .l2 {
+            font-weight: 500;
+        }
 
-    #error-container {
-        background-color: #ffdddd;
-        border-left: 6px solid #f44336;
-        color: #333;
-        padding: 15px;
-        margin-bottom: 25px;
-        border-radius: var(--border-radius);
-        font-size: 1.1em;
-    }
+        #error-container {
+            background-color: #ffdddd;
+            border-left: 6px solid #f44336;
+            color: #333;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+        }
 
-    h1,
-    h2 {
-        text-align: center;
-        color: var(--text-color);
-        font-weight: 900;
-    }
+        h1,
+        h2 {
+            text-align: center;
+            color: var(--text-color);
+            font-weight: 900;
+        }
 
-    .filters {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 35px;
-        padding: 20px;
-        background-color: var(--card-bg);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-    }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 35px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
 
-    .filter-group {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .filters label {
-        font-weight: 900;
-    }
+        .filters label {
+            font-weight: 900;
+        }
 
-    .filters select {
-        padding: 8px 12px;
-        font-size: 1rem;
-        border-radius: var(--border-radius);
-        border: 1px solid #ced4da;
-        background-color: #fff;
-        cursor: pointer;
-        font-family: 'proxima-nova', sans-serif;
-        font-weight: 500;
-    }
+        .filters select {
+            padding: 8px 12px;
+            font-size: 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #ced4da;
+            background-color: #fff;
+            cursor: pointer;
+            font-family: 'proxima-nova', sans-serif;
+            font-weight: 500;
+        }
 
-    #results-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-    }
+        #results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-    .category-card {
-        background-color: var(--card-bg);
-        padding: 20px;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        text-decoration: none;
-        color: var(--text-color);
-        transition: transform 0.2s, box-shadow 0.2s;
-        border-left: 5px solid;
-    }
+        .category-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            padding-bottom: 10px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 5px solid;
+        }
 
-    .category-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
 
-    .category-card h3 {
-        margin: 0 0 10px 0;
-        font-weight: 900;
-    }
+        .category-card h3 {
+            margin: 0 0 10px 0;
+            font-weight: 900;
+        }
 
-    .category-card p {
-        margin: 0;
-        color: #666;
-        text-transform: capitalize;
-    }
+        .category-card p {
+            margin: 0;
+            color: #666;
+            text-transform: capitalize;
+        }
 
-    .standards-list {
-        list-style: none;
-        padding: 0;
-    }
+        .standards-list {
+            list-style: none;
+            padding: 0;
+        }
 
-    .standard-item a {
-        display: block;
-        padding: 20px;
-        margin-bottom: 15px;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        text-decoration: none;
-        font-weight: 900;
-        font-size: 1.2em;
-        transition: transform 0.2s, box-shadow 0.2s, color 0.2s;
-    }
+        .standard-item a {
+            display: block;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2em;
+            transition: transform 0.2s, box-shadow 0.2s, color 0.2s;
+        }
 
-    .standard-item a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
+        .standard-item a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    .back-link {
-        display: inline-block;
-        font-weight: 900;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
+        .back-link {
+            display: inline-block;
+            font-weight: 900;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-    #footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background: whitesmoke;
-        font-size: 0.8em;
-        padding: 10px 0;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.5s ease;
-    }
+        #footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: whitesmoke;
+            font-size: 0.8em;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease;
+        }
 
-    #footer p {
-        text-align: center;
-        color: black;
-        line-height: 1.5;
-        margin: 0;
-        padding: 0 15px;
-        transition: color 0.5s ease;
-    }
+        #footer p {
+            text-align: center;
+            color: black;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0 15px;
+            transition: color 0.5s ease;
+        }
 
-    #footer a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.2s ease;
-        text-weight: 900;
-    }
+        #footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
 
-    #footer a:hover {
-        text-decoration: underline;
-    }
-    
-    /* --- NEW STYLES FOR INFO BOX --- */
-    .info-box {
-        background-color: var(--card-bg);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        padding: 10px 25px 15px 25px;
-        margin-top: 35px;
-    }
-    
-    .info-box h2 {
-        text-align: left;
-        margin-top: 10px;
-    }
-
-    .info-box p {
-        line-height: 1.6;
-    }
-
-    .info-box code {
-        background-color: #e5e7eb; /* light gray */
-        padding: 3px 6px;
-        border-radius: 4px;
-        font-family: monospace;
-    }
-</style>
-
+        #footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
     <div id="app"></div>
     <div id="footer">
@@ -259,297 +233,365 @@
             Scipad is a registered trademark of Silverback Academic Media and is referenced here under fair use for
             identification purposes only. <a href="/about">Learn about our mission.</a></p>
     </div>
-    
-<script>
-    const app = document.getElementById('app');
-    const footer = document.getElementById('footer');
-    const footerText = footer.querySelector('p');
-    const footerLink = footer.querySelector('a');
 
-    async function fetchData() {
-        try {
-            const response = await fetch('data.json');
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return await response.json();
-        } catch (error) {
-            console.error("Error fetching data.json:", error);
-            return null;
-        }
-    }
+    <script>
+        const app = document.getElementById('app');
+        const footer = document.getElementById('footer');
+        const footerText = footer.querySelector('p');
+        const footerLink = footer.querySelector('a');
 
-    // --- ADVANCED COLOR ALGORITHM FUNCTIONS ---
-    function getTextColorForBg(hex) {
-        if (!hex) return '#333333';
-        const r = parseInt(hex.substr(1, 2), 16);
-        const g = parseInt(hex.substr(3, 2), 16);
-        const b = parseInt(hex.substr(5, 2), 16);
-        const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        return (yiq >= 149) ? '#333333' : '#FFFFFF';
-    }
-
-    function hexToHsl(H) {
-        let r = 0, g = 0, b = 0;
-        if (H.length == 4) { r = "0x" + H[1] + H[1]; g = "0x" + H[2] + H[2]; b = "0x" + H[3] + H[3]; }
-        else if (H.length == 7) { r = "0x" + H[1] + H[2]; g = "0x" + H[3] + H[4]; b = "0x" + H[5] + H[6]; }
-        r /= 255; g /= 255; b /= 255;
-        let cmin = Math.min(r, g, b), cmax = Math.max(r, g, b), delta = cmax - cmin, h = 0, s = 0, l = 0;
-        if (delta == 0) h = 0;
-        else if (cmax == r) h = ((g - b) / delta) % 6;
-        else if (cmax == g) h = (b - r) / delta + 2;
-        else h = (r - g) / delta + 4;
-        h = Math.round(h * 60);
-        if (h < 0) h += 360;
-        l = (cmax + cmin) / 2;
-        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-        s = +(s * 100).toFixed(1);
-        l = +(l * 100).toFixed(1);
-        return [h, s, l];
-    }
-
-    function hslToHex(h, s, l) {
-        s /= 100; l /= 100;
-        let c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2, r = 0, g = 0, b = 0;
-        if (0 <= h && h < 60) { r = c; g = x; b = 0; }
-        else if (60 <= h && h < 120) { r = x; g = c; b = 0; }
-        else if (120 <= h && h < 180) { r = 0; g = c; b = x; }
-        else if (180 <= h && h < 240) { r = 0; g = x; b = c; }
-        else if (240 <= h && h < 300) { r = x; g = 0; b = c; }
-        else if (300 <= h && h < 360) { r = c; g = 0; b = x; }
-        r = Math.round((r + m) * 255).toString(16);
-        g = Math.round((g + m) * 255).toString(16);
-        b = Math.round((b + m) * 255).toString(16);
-        if (r.length == 1) r = "0" + r;
-        if (g.length == 1) g = "0" + g;
-        if (b.length == 1) b = "0" + b;
-        return "#" + r + g + b;
-    }
-
-    function generateLinkColor(baseHex, cardBgHex) {
-        const [h, s, l] = hexToHsl(baseHex);
-        const isCardBgLight = getTextColorForBg(cardBgHex) === '#333333';
-        const newHue = (h + 140) % 360; 
-        const newSaturation = 85; 
-        const newLightness = isCardBgLight ? 45 : 75;
-        return hslToHex(newHue, newSaturation, newLightness);
-    }
-
-    function renderError(mainContainer, message) {
-        const errorContainer = document.createElement('div');
-        errorContainer.id = 'error-container';
-        errorContainer.innerHTML = `<p><strong>Error:</strong> ${message}</p>`;
-        mainContainer.appendChild(errorContainer);
-    }
-
-    function createLogo(sizeClass, color) {
-        const logoDiv = document.createElement('div');
-        logoDiv.className = 'logodiv';
-        logoDiv.innerHTML = `<a href="/"><span class="l1 logo ${sizeClass}">sciPad</span><span class="l2 logo ${sizeClass}"> answers</span></a>`;
-        logoDiv.style.color = color;
-        return logoDiv;
-    }
-
-    function renderHomePage(mainContainer, data) {
-        document.body.style.backgroundColor = 'var(--bg-color)';
-        footer.style.backgroundColor = 'whitesmoke';
-        footerText.style.color = 'black';
-        footerLink.style.color = '#007bff';
-        footerLink.style.textDecoration = 'none';
-        footerLink.onmouseover = () => footerLink.style.textDecoration = 'underline';
-        footerLink.onmouseout = () => footerLink.style.textDecoration = 'none';
-
-        const filterContainer = document.createElement('div');
-        filterContainer.className = 'filters';
-        filterContainer.innerHTML = `
-            <div class="filter-group">
-                <label for="subject-select">Subject:</label>
-                <select id="subject-select"></select>
-            </div>
-            <div class="filter-group">
-                <label for="level-select">Level:</label>
-                <select id="level-select"></select>
-            </div>
-        `;
-        mainContainer.appendChild(filterContainer);
-        const resultsContainer = document.createElement('div');
-        resultsContainer.id = 'results-container';
-        mainContainer.appendChild(resultsContainer);
-
-        let activeFilters = { subject: 'All', year: 'All' };
-        const allCategories = Object.values(data);
-        const subjectSelect = document.getElementById('subject-select');
-        const levelSelect = document.getElementById('level-select');
-
-        function updateAndRender() {
-            const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
-            const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
-            const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
-            const uniqueLevels = [...new Set(availableBasedOnSubject.map(cat => cat.year))].sort();
-            const availableLevels = ['All', ...uniqueLevels];
-            populateSelect(subjectSelect, availableSubjects, activeFilters.subject);
-            populateSelect(levelSelect, availableLevels, activeFilters.year);
-            resultsContainer.innerHTML = '';
-            Object.entries(data).forEach(([key, category]) => {
-                const subjectMatch = activeFilters.subject === 'All' || category.subject === activeFilters.subject;
-                const yearMatch = activeFilters.year === 'All' || category.year === activeFilters.year;
-                if (subjectMatch && yearMatch) {
-                    const card = document.createElement('a');
-                    card.href = `/${key}`;
-                    card.className = 'category-card';
-                    card.style.borderLeftColor = category.color;
-                    card.innerHTML = `
-                        <h3>${category.title}</h3>
-                        <p>${category.subject} - Level ${category.year}</p>
-                    `;
-                    resultsContainer.appendChild(card);
-                }
-            });
-        }
-        function populateSelect(selectElement, options, selectedValue) {
-            const currentValue = selectElement.value;
-            selectElement.innerHTML = '';
-            options.forEach(option => {
-                const optionElement = document.createElement('option');
-                optionElement.value = option;
-                optionElement.textContent = option;
-                selectElement.appendChild(optionElement);
-            });
-            if (options.includes(currentValue)) { selectElement.value = currentValue; }
-            else { selectElement.value = selectedValue; }
-        }
-        subjectSelect.addEventListener('change', (e) => {
-            activeFilters.subject = e.target.value;
-            updateAndRender();
-        });
-        levelSelect.addEventListener('change', (e) => {
-            activeFilters.year = e.target.value;
-            updateAndRender();
-        });
-        updateAndRender();
-
-        // --- ADD THE NEW INFO BOX ---
-        const infoBox = document.createElement('div');
-        infoBox.className = 'info-box';
-        infoBox.innerHTML = `
-            <h2>How to use scip.ad:</h2>
-            <p><strong>Students:</strong> Select your class from this page and access the answers.</p>
-            <p><strong>Teachers:</strong> Give your students the short link for your standard. In most cases this will be the standard number, such as <code>scip.ad/PESS1.4</code> or <code>scip.ad/P3.3</code>. For internal and external books, the short link is <code>scip.ad/B2.ext</code> or <code>scip.ad/C3.int</code>.</p>
-        `;
-        mainContainer.appendChild(infoBox);
-    }
-
-    function renderCategoryPage(mainContainer, categoryData) {
-        const subjectColor = categoryData.color;
-        const pageTextColor = getTextColorForBg(subjectColor);
-        const cardAndFooterBg = (pageTextColor === '#FFFFFF') ? '#FFFFFF' : '#333333';
-        const linkColor = generateLinkColor(subjectColor, cardAndFooterBg);
-
-        document.body.style.backgroundColor = subjectColor;
-        footer.style.backgroundColor = cardAndFooterBg;
-        footerText.style.color = subjectColor;
-        footerLink.style.color = linkColor;
-        footerLink.style.textDecoration = 'none';
-        footerLink.onmouseover = null;
-        footerLink.onmouseout = null;
-
-        mainContainer.innerHTML = `
-            <h1 style="color: ${pageTextColor};">${categoryData.title}</h1>
-            <ul class="standards-list">
-                ${categoryData.pages.map(page => `
-                    <li class="standard-item">
-                        <a href="${page.url}" target="_blank" rel="noopener noreferrer" style="background-color: ${cardAndFooterBg}; color: ${subjectColor};">${page.title}</a>
-                    </li>
-                `).join('')}
-            </ul>
-        `;
-
-        const standardLinks = mainContainer.querySelectorAll('.standard-item a');
-        standardLinks.forEach(link => {
-            link.addEventListener('mouseover', () => link.style.color = linkColor);
-            link.addEventListener('mouseout', () => link.style.color = subjectColor);
-        });
-    }
-
-    function handleStandardRedirect(path, data) {
-        const parts = path.split('.');
-        if (parts.length < 2) return false;
-        const categoryKey = parts[0];
-        const pageId = parts.slice(1).join('.');
-        const category = data[categoryKey];
-        if (category) {
-            const page = category.pages.find(p => p.id.toUpperCase() === pageId);
-            if (page) {
-                window.location.href = page.url;
-                return true;
+        async function fetchData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error("Error fetching data.json:", error);
+                return null;
             }
         }
-        return false;
-    }
-    
-    async function main() {
-        const path = window.location.pathname.slice(1).toUpperCase();
-        
-        app.innerHTML = '<header class="app-header"></header><main></main>';
-        const header = app.querySelector('header');
-        const mainContent = app.querySelector('main');
 
-        const data = await fetchData();
-        if (!data) {
-            header.classList.add('header-center');
-            header.appendChild(createLogo('logo-large', 'var(--text-color)'));
-            renderError(mainContent, "Could not load the necessary data. Please ensure 'data.json' is available.");
-            return;
+        // --- ADVANCED COLOR ALGORITHM FUNCTIONS ---
+        function getTextColorForBg(hex) {
+            if (!hex) return '#333333';
+            const r = parseInt(hex.substr(1, 2), 16);
+            const g = parseInt(hex.substr(3, 2), 16);
+            const b = parseInt(hex.substr(5, 2), 16);
+            const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return (yiq >= 149) ? '#333333' : '#FFFFFF';
         }
 
-        if (path.includes('.')) {
-            if (!handleStandardRedirect(path, data)) {
+        function hexToHsl(H) {
+            let r = 0, g = 0, b = 0;
+            if (H.length == 4) { r = "0x" + H[1] + H[1]; g = "0x" + H[2] + H[2]; b = "0x" + H[3] + H[3]; }
+            else if (H.length == 7) { r = "0x" + H[1] + H[2]; g = "0x" + H[3] + H[4]; b = "0x" + H[5] + H[6]; }
+            r /= 255; g /= 255; b /= 255;
+            let cmin = Math.min(r, g, b), cmax = Math.max(r, g, b), delta = cmax - cmin, h = 0, s = 0, l = 0;
+            if (delta == 0) h = 0;
+            else if (cmax == r) h = ((g - b) / delta) % 6;
+            else if (cmax == g) h = (b - r) / delta + 2;
+            else h = (r - g) / delta + 4;
+            h = Math.round(h * 60);
+            if (h < 0) h += 360;
+            l = (cmax + cmin) / 2;
+            s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+            s = +(s * 100).toFixed(1);
+            l = +(l * 100).toFixed(1);
+            return [h, s, l];
+        }
+
+        function hslToHex(h, s, l) {
+            s /= 100; l /= 100;
+            let c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2, r = 0, g = 0, b = 0;
+            if (0 <= h && h < 60) { r = c; g = x; b = 0; }
+            else if (60 <= h && h < 120) { r = x; g = c; b = 0; }
+            else if (120 <= h && h < 180) { r = 0; g = c; b = x; }
+            else if (180 <= h && h < 240) { r = 0; g = x; b = c; }
+            else if (240 <= h && h < 300) { r = x; g = 0; b = c; }
+            else if (300 <= h && h < 360) { r = c; g = 0; b = x; }
+            r = Math.round((r + m) * 255).toString(16);
+            g = Math.round((g + m) * 255).toString(16);
+            b = Math.round((b + m) * 255).toString(16);
+            if (r.length == 1) r = "0" + r;
+            if (g.length == 1) g = "0" + g;
+            if (b.length == 1) b = "0" + b;
+            return "#" + r + g + b;
+        }
+
+        /**
+         * Generates a link color that contrasts well with the card/footer background.
+         * @param {string} baseHex - The subject's main color.
+         * @param {string} cardBgHex - The background color of the card/footer (#FFFFFF or #333333).
+         * @returns {string} A new hex color for links.
+         */
+        function generateLinkColor(baseHex, cardBgHex) {
+            // Robustness: fallback color
+            const fallbackDark = '#2563eb'; // good, medium blue for light backgrounds
+            const fallbackLight = '#93c5fd'; // lighter blue for dark backgrounds
+
+            if (!baseHex) return fallbackDark;
+            // ensure cardBgHex is a hex; if not, default to white
+            if (!cardBgHex || cardBgHex[0] !== '#') cardBgHex = '#ffffff';
+
+            // helpers
+            function hexToRgb(hex) {
+                if (!hex) return null;
+                if (hex.length === 4) {
+                    return {
+                        r: parseInt(hex[1] + hex[1], 16),
+                        g: parseInt(hex[2] + hex[2], 16),
+                        b: parseInt(hex[3] + hex[3], 16)
+                    };
+                }
+                return {
+                    r: parseInt(hex.substr(1, 2), 16),
+                    g: parseInt(hex.substr(3, 2), 16),
+                    b: parseInt(hex.substr(5, 2), 16)
+                };
+            }
+
+            function relLuminance({ r, g, b }) {
+                // convert sRGB 0..255 to linearized 0..1
+                const srgb = [r, g, b].map(v => v / 255).map(c => (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+                return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
+            }
+
+            function contrastRatio(hex1, hex2) {
+                const rgb1 = hexToRgb(hex1);
+                const rgb2 = hexToRgb(hex2);
+                if (!rgb1 || !rgb2) return 1;
+                const L1 = relLuminance(rgb1);
+                const L2 = relLuminance(rgb2);
+                const lighter = Math.max(L1, L2);
+                const darker = Math.min(L1, L2);
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+
+            try {
+                const [h, sRaw] = hexToHsl(baseHex);
+                // Choose a moderate saturation (avoid neon) and a hue moved away from the base
+                const sat = Math.min(65, Math.max(38, Math.round(sRaw)));
+                const hue = (h + 160) % 360; // move to a distinct but related hue
+
+                // Determine whether card background is light or dark (use existing helper)
+                const cardBgIsLight = getTextColorForBg(cardBgHex) === '#333333';
+
+                // Start lightness values: for light card bg, link should be darker; for dark card bg, link should be lighter
+                let light = cardBgIsLight ? 28 : 70;
+
+                // Iterate to find a lightness that meets WCAG contrast >= 4.5:1 (normal text)
+                const targetContrast = 4.5;
+                for (let i = 0; i < 12; i++) {
+                    const candidateHex = hslToHex(hue, sat, Math.round(light));
+                    if (contrastRatio(candidateHex, cardBgHex) >= targetContrast) return candidateHex;
+                    // Adjust lightness towards better contrast
+                    if (cardBgIsLight) light -= 6; else light += 6;
+                }
+
+                // If iterative search failed, fall back to safe blues depending on bg
+                return cardBgIsLight ? fallbackDark : fallbackLight;
+            } catch (e) {
+                return fallbackDark;
+            }
+        }
+
+        function renderError(mainContainer, message) {
+            const errorContainer = document.createElement('div');
+            errorContainer.id = 'error-container';
+            errorContainer.innerHTML = `<p><strong>Error:</strong> ${message}</p>`;
+            mainContainer.appendChild(errorContainer);
+        }
+
+        function createLogo(sizeClass, color) {
+            const logoDiv = document.createElement('div');
+            logoDiv.className = 'logodiv';
+            logoDiv.innerHTML = `<a href="/"><span class="l1 logo ${sizeClass}">sciPad</span><span class="l2 logo ${sizeClass}"> answers</span></a>`;
+            logoDiv.style.color = color;
+            return logoDiv;
+        }
+
+        function renderHomePage(mainContainer, data) {
+            document.body.style.backgroundColor = 'var(--bg-color)';
+            footer.style.backgroundColor = 'whitesmoke';
+            footerText.style.color = 'black';
+            // dynamic footer link color that contrasts with the footer background
+            const homeLinkColor = generateLinkColor('#007bff', 'whitesmoke');
+            footerLink.style.color = homeLinkColor;
+            footerLink.style.textDecoration = 'none';
+            footerLink.onmouseover = () => {
+                footerLink.style.textDecoration = 'underline';
+                footerLink.style.color = generateLinkColor('#007bff', '#e0e7ff');
+            };
+            footerLink.onmouseout = () => {
+                footerLink.style.textDecoration = 'none';
+                footerLink.style.color = homeLinkColor;
+            };
+
+            const filterContainer = document.createElement('div');
+            filterContainer.className = 'filters';
+            filterContainer.innerHTML = `
+                <div class="filter-group">
+                    <label for="subject-select">Subject:</label>
+                    <select id="subject-select"></select>
+                </div>
+                <div class="filter-group">
+                    <label for="level-select">Level:</label>
+                    <select id="level-select"></select>
+                </div>
+            `;
+            mainContainer.appendChild(filterContainer);
+            const resultsContainer = document.createElement('div');
+            resultsContainer.id = 'results-container';
+            mainContainer.appendChild(resultsContainer);
+
+            let activeFilters = { subject: 'All', year: 'All' };
+            const allCategories = Object.values(data);
+            const subjectSelect = document.getElementById('subject-select');
+            const levelSelect = document.getElementById('level-select');
+
+            function updateAndRender() {
+                const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
+                const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
+                const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
+                const uniqueLevels = [...new Set(availableBasedOnSubject.map(cat => cat.year))].sort();
+                const availableLevels = ['All', ...uniqueLevels];
+                populateSelect(subjectSelect, availableSubjects, activeFilters.subject);
+                populateSelect(levelSelect, availableLevels, activeFilters.year);
+                resultsContainer.innerHTML = '';
+                Object.entries(data).forEach(([key, category]) => {
+                    const subjectMatch = activeFilters.subject === 'All' || category.subject === activeFilters.subject;
+                    const yearMatch = activeFilters.year === 'All' || category.year === activeFilters.year;
+                    if (subjectMatch && yearMatch) {
+                        const card = document.createElement('a');
+                        card.href = `/${key}`;
+                        card.className = 'category-card';
+                        card.style.borderLeftColor = category.color;
+                        card.innerHTML = `
+                            <h3>${category.title}</h3>
+                        `;
+                        resultsContainer.appendChild(card);
+                    }
+                });
+            }
+            function populateSelect(selectElement, options, selectedValue) {
+                const currentValue = selectElement.value;
+                selectElement.innerHTML = '';
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    selectElement.appendChild(optionElement);
+                });
+                if (options.includes(currentValue)) { selectElement.value = currentValue; }
+                else { selectElement.value = selectedValue; }
+            }
+            subjectSelect.addEventListener('change', (e) => {
+                activeFilters.subject = e.target.value;
+                updateAndRender();
+            });
+            levelSelect.addEventListener('change', (e) => {
+                activeFilters.year = e.target.value;
+                updateAndRender();
+            });
+            updateAndRender();
+        }
+
+        function renderCategoryPage(mainContainer, categoryData) {
+            const subjectColor = categoryData.color;
+            const pageTextColor = getTextColorForBg(subjectColor);
+            const cardAndFooterBg = (pageTextColor === '#FFFFFF') ? '#FFFFFF' : '#333333';
+            const linkColor = generateLinkColor(subjectColor, cardAndFooterBg);
+
+            document.body.style.backgroundColor = subjectColor;
+            footer.style.backgroundColor = cardAndFooterBg;
+            footerText.style.color = subjectColor;
+            footerLink.style.color = linkColor;
+            footerLink.style.textDecoration = 'none';
+            footerLink.onmouseover = null;
+            footerLink.onmouseout = null;
+
+            mainContainer.innerHTML = `
+                <h1 style="color: ${pageTextColor};">${categoryData.title}</h1>
+                <ul class="standards-list">
+                    ${categoryData.pages.map(page => `
+                        <li class="standard-item">
+                            <a href="${page.url}" target="_blank" rel="noopener noreferrer" style="background-color: ${cardAndFooterBg}; color: ${subjectColor};">${page.title}</a>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+
+            const standardLinks = mainContainer.querySelectorAll('.standard-item a');
+            standardLinks.forEach(link => {
+                link.addEventListener('mouseover', () => link.style.color = linkColor);
+                link.addEventListener('mouseout', () => link.style.color = subjectColor);
+            });
+        }
+
+        function handleStandardRedirect(path, data) {
+            const parts = path.split('.');
+            if (parts.length < 2) return false;
+            const categoryKey = parts[0];
+            const pageId = parts.slice(1).join('.');
+            const category = data[categoryKey];
+            if (category) {
+                const page = category.pages.find(p => p.id.toUpperCase() === pageId);
+                if (page) {
+                    window.location.href = page.url;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        async function main() {
+            const path = window.location.pathname.slice(1).toUpperCase();
+
+            app.innerHTML = '<header class="app-header"></header><main></main>';
+            const header = app.querySelector('header');
+            const mainContent = app.querySelector('main');
+
+            const data = await fetchData();
+            if (!data) {
                 header.classList.add('header-center');
                 header.appendChild(createLogo('logo-large', 'var(--text-color)'));
-                renderError(mainContent, `The standard '${path}' could not be found.`);
-                renderHomePage(mainContent, data);
+                renderError(mainContent, "Could not load the necessary data. Please ensure 'data.json' is available.");
+                return;
             }
-            return;
-        }
-        
-        if (path === '') {
+
+            if (path.includes('.')) {
+                if (!handleStandardRedirect(path, data)) {
+                    header.classList.add('header-center');
+                    header.appendChild(createLogo('logo-large', 'var(--text-color)'));
+                    renderError(mainContent, `The standard '${path}' could not be found.`);
+                    renderHomePage(mainContent, data);
+                }
+                return;
+            }
+
+            if (path === '') {
+                header.classList.add('header-center');
+                header.appendChild(createLogo('logo-large', 'var(--text-color)'));
+                renderHomePage(mainContent, data);
+                return;
+            }
+
+            if (data[path]) {
+                const categoryData = data[path];
+                const pageTextColor = getTextColorForBg(categoryData.color);
+                const cardAndFooterBg = (pageTextColor === '#FFFFFF') ? '#FFFFFF' : '#333333';
+                const linkColor = generateLinkColor(categoryData.color, cardAndFooterBg);
+
+                header.classList.add('header-split');
+                const backLink = document.createElement('a');
+                backLink.href = '/';
+                backLink.className = 'back-link';
+                backLink.textContent = '‹ Back to All Subjects';
+                // Use black or white depending on page text/background contrast so the back link is always clear
+                const backDefaultColor = (pageTextColor === '#333333') ? '#000000' : '#ffffff';
+                const backHoverColor = (pageTextColor === '#333333') ? '#111827' : '#f8fafc';
+                backLink.style.color = backDefaultColor;
+                backLink.addEventListener('mouseover', () => backLink.style.color = backHoverColor);
+                backLink.addEventListener('mouseout', () => backLink.style.color = backDefaultColor);
+                header.appendChild(backLink);
+
+                const logo = createLogo('logo-small', pageTextColor);
+                logo.addEventListener('mouseover', () => logo.style.color = linkColor);
+                logo.addEventListener('mouseout', () => logo.style.color = pageTextColor);
+                header.appendChild(logo);
+
+                renderCategoryPage(mainContent, categoryData);
+                return;
+            }
+
             header.classList.add('header-center');
             header.appendChild(createLogo('logo-large', 'var(--text-color)'));
+            renderError(mainContent, `The page or category '/${path}' does not exist.`);
             renderHomePage(mainContent, data);
-            return;
         }
 
-        if (data[path]) {
-            const categoryData = data[path];
-            const pageTextColor = getTextColorForBg(categoryData.color);
-            const cardAndFooterBg = (pageTextColor === '#FFFFFF') ? '#FFFFFF' : '#333333';
-            const linkColor = generateLinkColor(categoryData.color, cardAndFooterBg);
-
-            header.classList.add('header-split');
-            const backLink = document.createElement('a');
-            backLink.href = '/';
-            backLink.className = 'back-link';
-            backLink.textContent = '‹ Back to All Subjects';
-            backLink.style.color = pageTextColor;
-            backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
-            backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
-            header.appendChild(backLink);
-            
-            const logo = createLogo('logo-small', pageTextColor);
-            logo.addEventListener('mouseover', () => logo.style.color = linkColor);
-            logo.addEventListener('mouseout', () => logo.style.color = pageTextColor);
-            header.appendChild(logo);
-
-            renderCategoryPage(mainContent, categoryData);
-            return;
-        }
-
-        header.classList.add('header-center');
-        header.appendChild(createLogo('logo-large', 'var(--text-color)'));
-        renderError(mainContent, `The page or category '/${path}' does not exist.`);
-        renderHomePage(mainContent, data);
-    }
-
-    main();
-</script>
-
+        main();
+    </script>
 </body>
+
 </html>
