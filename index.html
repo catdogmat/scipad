@@ -201,8 +201,13 @@
             function updateAndRender() {
                 const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
                 const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
+                
                 const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
-                const availableLevels = ['All', ...new Set(availableBasedOnSubject.map(cat => cat.year)).sort()];
+                
+                // *** THIS IS THE CORRECTED LINE ***
+                // First, create an array from the Set, then sort it.
+                const uniqueLevels = [...new Set(availableBasedOnSubject.map(cat => cat.year))].sort();
+                const availableLevels = ['All', ...uniqueLevels];
 
                 populateSelect(subjectSelect, availableSubjects, activeFilters.subject);
                 populateSelect(levelSelect, availableLevels, activeFilters.year);
@@ -235,7 +240,6 @@
                     optionElement.textContent = option;
                     selectElement.appendChild(optionElement);
                 });
-                // Try to preserve the previous selection if it's still a valid option
                 if (options.includes(currentValue)) {
                     selectElement.value = currentValue;
                 } else {
@@ -243,7 +247,6 @@
                 }
             }
             
-            // *** LINES THAT WERE MISSING ARE RESTORED HERE ***
             subjectSelect.addEventListener('change', (e) => {
                 activeFilters.subject = e.target.value;
                 updateAndRender();
@@ -254,7 +257,7 @@
                 updateAndRender();
             });
 
-            updateAndRender(); // Initial call to render the content
+            updateAndRender();
         }
 
         function renderCategoryPage(categoryData) {
