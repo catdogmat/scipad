@@ -1,7 +1,7 @@
 {
   "B2": {
     "title": "Biology Level 2",
-    "subject": "biology",
+    "subject": "Biology",
     "year": "2",
     "color": "#FF5733",
     "pages": [
@@ -24,7 +24,7 @@
   },
   "C2": {
     "title": "Chemistry Level 2",
-    "subject": "chemistry",
+    "subject": "Chemistry",
     "year": "2",
     "color": "#33C1FF",
     "pages": [
@@ -42,7 +42,7 @@
   },
   "P2": {
     "title": "Physics Level 2",
-    "subject": "physics",
+    "subject": "Physics",
     "year": "2",
     "color": "#8E44AD",
     "pages": [
@@ -75,7 +75,7 @@
   },
   "P3": {
     "title": "Physics Level 3",
-    "subject": "physics",
+    "subject": "Physics",
     "year": "3",
     "color": "#2ECC71",
     "pages": [
@@ -108,7 +108,7 @@
   },
   "PESS1": {
     "title": "Physics Earth and Space Science Level 1",
-    "subject": "physics-earth-space-science",
+    "subject": "Physics Earth and Space Science",
     "year": "1",
     "color": "#F1C40F",
     "pages": [
