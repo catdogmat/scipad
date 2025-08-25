@@ -49,7 +49,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Increased gap for better spacing */
+            gap: 20px;
             margin-bottom: 30px;
             padding: 20px;
             background-color: var(--card-bg);
@@ -141,14 +141,10 @@
             color: var(--primary-color);
             text-decoration: none;
         }
-
     </style>
 </head>
 <body>
-
-    <div id="app">
-        <!-- Dynamic content will be rendered here -->
-    </div>
+    <div id="app"></div>
 
     <script>
         const app = document.getElementById('app');
@@ -169,42 +165,26 @@
             const errorContainer = document.createElement('div');
             errorContainer.id = 'error-container';
             errorContainer.innerHTML = `<p><strong>Error:</strong> ${message}</p>`;
-            if (app.firstChild) {
-                app.insertBefore(errorContainer, app.firstChild);
-            } else {
-                app.appendChild(errorContainer);
-            }
+            if (app.firstChild) app.insertBefore(errorContainer, app.firstChild);
+            else app.appendChild(errorContainer);
         }
 
-        /**
-         * Renders the home page, with optional pre-selected filters.
-         * @param {Object} data - The entire dataset.
-         * @param {Object} initialFilters - Optional object like { year: '2' } or { subject: 'physics' }.
-         */
         function renderHomePage(data, initialFilters = {}) {
             document.body.style.backgroundColor = 'var(--bg-color)';
-            
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
-            
-            const uniqueSubjects = ['All', ...new Set(Object.values(data).map(item => item.subject))];
-            const uniqueYears = ['All', ...new Set(Object.values(data).map(item => item.year).sort())];
 
             const filterContainer = document.createElement('div');
             filterContainer.className = 'filters';
             filterContainer.innerHTML = `
                 <div class="filter-group">
                     <label for="subject-select">Subject:</label>
-                    <select id="subject-select">
-                        ${uniqueSubjects.map(subject => `<option value="${subject}">${subject}</option>`).join('')}
-                    </select>
+                    <select id="subject-select"></select>
                 </div>
                 <div class="filter-group">
                     <label for="level-select">Level:</label>
-                    <select id="level-select">
-                        ${uniqueYears.map(year => `<option value="${year}">${year}</option>`).join('')}
-                    </select>
+                    <select id="level-select"></select>
                 </div>
             `;
             app.appendChild(filterContainer);
@@ -212,15 +192,28 @@
             const resultsContainer = document.createElement('div');
             resultsContainer.id = 'results-container';
             app.appendChild(resultsContainer);
-            
+
             let activeFilters = { subject: 'All', year: 'All', ...initialFilters };
-            
-            const displayResults = () => {
+            const allCategories = Object.values(data);
+
+            const subjectSelect = document.getElementById('subject-select');
+            const levelSelect = document.getElementById('level-select');
+
+            function updateAndRender() {
+                const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
+                const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
+
+                const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
+                const availableLevels = ['All', ...new Set(availableBasedOnSubject.map(cat => cat.year)).sort()];
+
+                populateSelect(subjectSelect, availableSubjects, activeFilters.subject);
+                populateSelect(levelSelect, availableLevels, activeFilters.year);
+                
                 resultsContainer.innerHTML = '';
                 Object.entries(data).forEach(([key, category]) => {
                     const subjectMatch = activeFilters.subject === 'All' || category.subject === activeFilters.subject;
                     const yearMatch = activeFilters.year === 'All' || category.year === activeFilters.year;
-                    
+
                     if (subjectMatch && yearMatch) {
                         const card = document.createElement('a');
                         card.href = `/${key}`;
@@ -233,34 +226,35 @@
                         resultsContainer.appendChild(card);
                     }
                 });
-            };
+            }
+            
+            function populateSelect(selectElement, options, selectedValue) {
+                selectElement.innerHTML = '';
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    selectElement.appendChild(optionElement);
+                });
+                selectElement.value = selectedValue;
+            }
 
-            const subjectSelect = document.getElementById('subject-select');
-            const levelSelect = document.getElementById('level-select');
-
-            // Set initial dropdown values from filters
-            subjectSelect.value = activeFilters.subject;
-            levelSelect.value = activeFilters.year;
-
-            // Add event listeners
             subjectSelect.addEventListener('change', (e) => {
                 activeFilters.subject = e.target.value;
-                displayResults();
+                updateAndRender();
             });
 
             levelSelect.addEventListener('change', (e) => {
                 activeFilters.year = e.target.value;
-                displayResults();
+                updateAndRender();
             });
 
-            // Initial display
-            displayResults();
+            updateAndRender();
         }
 
         function renderCategoryPage(categoryData) {
             app.innerHTML = '';
             document.body.style.backgroundColor = categoryData.color;
-            
             app.innerHTML = `
                 <a href="/" class="back-link">‹ Back to All Subjects</a>
                 <h1>${categoryData.title}</h1>
@@ -291,6 +285,21 @@
             }
             return false;
         }
+        
+        /**
+         * Finds a subject from the data based on a short code (e.g., 'P' -> 'physics').
+         * @param {string} shortCode - The short code from the URL path.
+         * @param {Object} data - The entire dataset.
+         * @returns {string|null} The full subject name or null if not found.
+         */
+        function findSubjectByShortCode(shortCode, data) {
+            for (const key in data) {
+                if (key.startsWith(shortCode)) {
+                    return data[key].subject; // Return the subject of the first matching key
+                }
+            }
+            return null; // No match found
+        }
 
         async function main() {
             const data = await fetchData();
@@ -316,14 +325,10 @@
                 return;
             }
 
-            const subjectMap = {
-                'B': 'biology',
-                'C': 'chemistry',
-                'P': 'physics',
-                'PES': 'physics-earth-space-science'
-            };
-            if (subjectMap[path]) {
-                renderHomePage(data, { subject: subjectMap[path] });
+            // **NEW**: Dynamically find subject based on path prefix
+            const subject = findSubjectByShortCode(path, data);
+            if (subject) {
+                renderHomePage(data, { subject: subject });
                 return;
             }
 
