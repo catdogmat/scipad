@@ -25,7 +25,6 @@
         body {
             font-family: 'proxima-nova', sans-serif;
             font-weight: 500;
-            /* FONT FEATURE ADDED */
             font-feature-settings: "ss04" on;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -39,6 +38,48 @@
             max-width: 900px;
             margin: 0 auto;
         }
+        
+        /* --- NEW HEADER STYLES --- */
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 48px; /* Give it some space */
+        }
+
+        .header-split {
+            justify-content: space-between;
+        }
+
+        .header-center {
+            justify-content: center;
+        }
+
+        .logodiv a {
+            text-decoration: none;
+            color: inherit; /* Inherits color from parent */
+        }
+        
+        .logo {
+            transition: color 0.5s ease;
+        }
+        
+        .logo-large {
+            font-size: 2.5rem;
+        }
+
+        .logo-small {
+            font-size: 1.5rem;
+        }
+
+        .l1 {
+            font-weight: 900;
+        }
+
+        .l2 {
+            font-weight: 500;
+        }
+        /* --- END HEADER STYLES --- */
 
         #error-container {
             background-color: #ffdddd;
@@ -147,7 +188,6 @@
 
         .back-link {
             display: inline-block;
-            margin-bottom: 20px;
             font-weight: 900;
             text-decoration: none;
         }
@@ -160,10 +200,9 @@
             background: whitesmoke;
             font-size: 0.8em;
             padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.5s ease;
         }
-
         #footer p {
             text-align: center;
             color: black;
@@ -172,7 +211,6 @@
             padding: 0 15px;
             transition: color 0.5s ease;
         }
-
         #footer a {
             color: #007bff;
             transition: color 0.5s ease;
@@ -219,11 +257,8 @@
 
         function hexToHsl(H) {
             let r = 0, g = 0, b = 0;
-            if (H.length == 4) {
-                r = "0x" + H[1] + H[1]; g = "0x" + H[2] + H[2]; b = "0x" + H[3] + H[3];
-            } else if (H.length == 7) {
-                r = "0x" + H[1] + H[2]; g = "0x" + H[3] + H[4]; b = "0x" + H[5] + H[6];
-            }
+            if (H.length == 4) { r = "0x" + H[1] + H[1]; g = "0x" + H[2] + H[2]; b = "0x" + H[3] + H[3]; }
+            else if (H.length == 7) { r = "0x" + H[1] + H[2]; g = "0x" + H[3] + H[4]; b = "0x" + H[5] + H[6]; }
             r /= 255; g /= 255; b /= 255;
             let cmin = Math.min(r, g, b), cmax = Math.max(r, g, b), delta = cmax - cmin, h = 0, s = 0, l = 0;
             if (delta == 0) h = 0;
@@ -271,24 +306,29 @@
             else app.appendChild(errorContainer);
         }
 
+        function createLogo(sizeClass, color) {
+            const logoDiv = document.createElement('div');
+            logoDiv.className = 'logodiv';
+            logoDiv.innerHTML = `<a href="/"><span class="l1 logo ${sizeClass}">sciPad</span><span class="l2 logo ${sizeClass}"> answers</span></a>`;
+            logoDiv.style.color = color;
+            return logoDiv;
+        }
+
         function renderHomePage(data) {
             document.body.style.backgroundColor = 'var(--bg-color)';
             footer.style.backgroundColor = 'whitesmoke';
             footerText.style.color = 'black';
             footerLink.style.color = '#007bff';
             const existingError = document.getElementById('error-container');
-
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
-            // Add logo above filters
-            const logo = document.createElement('img');
-            logo.src = 'logo.png';
-            logo.alt = 'Logo';
-            logo.style.display = 'block';
-            logo.style.margin = '0 auto 30px auto';
-            logo.style.maxWidth = '120px';
-            logo.style.borderRadius = '16px';
-            app.appendChild(logo);
+
+            // Create and append header
+            const header = document.createElement('header');
+            header.className = 'app-header header-center';
+            header.appendChild(createLogo('logo-large', 'var(--text-color)'));
+            app.appendChild(header);
+
             const filterContainer = document.createElement('div');
             filterContainer.className = 'filters';
             filterContainer.innerHTML = `
@@ -368,8 +408,23 @@
             footerText.style.color = subjectColor;
             footerLink.style.color = linkColor;
 
-            app.innerHTML = `
-                <a href="/" class="back-link" style="color: ${pageTextColor};">‹ Back to All Subjects</a>
+            app.innerHTML = ''; // Clear app content
+
+            // Create and append header
+            const header = document.createElement('header');
+            header.className = 'app-header header-split';
+            const backLink = document.createElement('a');
+            backLink.href = '/';
+            backLink.className = 'back-link';
+            backLink.textContent = '‹ Back to All Subjects';
+            backLink.style.color = pageTextColor;
+            header.appendChild(backLink);
+            header.appendChild(createLogo('logo-small', pageTextColor));
+            app.appendChild(header);
+
+            // Append the rest of the content
+            const contentDiv = document.createElement('div');
+            contentDiv.innerHTML = `
                 <h1 style="color: ${pageTextColor};">${categoryData.title}</h1>
                 <ul class="standards-list">
                     ${categoryData.pages.map(page => `
@@ -379,6 +434,7 @@
                     `).join('')}
                 </ul>
             `;
+            app.appendChild(contentDiv);
         }
 
         function handleStandardRedirect(path, data) {
@@ -396,7 +452,7 @@
             }
             return false;
         }
-
+        
         async function main() {
             const data = await fetchData();
             if (!data) return;
