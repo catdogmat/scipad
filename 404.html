@@ -39,12 +39,11 @@
             margin: 0 auto;
         }
         
-        /* --- NEW HEADER STYLES --- */
         .app-header {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            min-height: 48px; /* Give it some space */
+            min-height: 48px;
         }
 
         .header-split {
@@ -57,7 +56,7 @@
 
         .logodiv a {
             text-decoration: none;
-            color: inherit; /* Inherits color from parent */
+            color: inherit;
         }
         
         .logo {
@@ -79,7 +78,6 @@
         .l2 {
             font-weight: 500;
         }
-        /* --- END HEADER STYLES --- */
 
         #error-container {
             background-color: #ffdddd;
@@ -178,7 +176,7 @@
             text-decoration: none;
             font-weight: 900;
             font-size: 1.2em;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, color 0.2s;
         }
 
         .standard-item a:hover {
@@ -190,6 +188,7 @@
             display: inline-block;
             font-weight: 900;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         #footer {
@@ -214,6 +213,10 @@
         #footer a {
             color: #007bff;
             transition: color 0.5s ease;
+        }
+        /* HOVER EFFECT ADDED */
+        #footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -322,13 +325,10 @@
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
-
-            // Create and append header
             const header = document.createElement('header');
             header.className = 'app-header header-center';
             header.appendChild(createLogo('logo-large', 'var(--text-color)'));
             app.appendChild(header);
-
             const filterContainer = document.createElement('div');
             filterContainer.className = 'filters';
             filterContainer.innerHTML = `
@@ -408,9 +408,8 @@
             footerText.style.color = subjectColor;
             footerLink.style.color = linkColor;
 
-            app.innerHTML = ''; // Clear app content
+            app.innerHTML = ''; 
 
-            // Create and append header
             const header = document.createElement('header');
             header.className = 'app-header header-split';
             const backLink = document.createElement('a');
@@ -422,7 +421,6 @@
             header.appendChild(createLogo('logo-small', pageTextColor));
             app.appendChild(header);
 
-            // Append the rest of the content
             const contentDiv = document.createElement('div');
             contentDiv.innerHTML = `
                 <h1 style="color: ${pageTextColor};">${categoryData.title}</h1>
@@ -435,6 +433,16 @@
                 </ul>
             `;
             app.appendChild(contentDiv);
+
+            // --- ADDING HOVER EVENT LISTENERS ---
+            backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
+            backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
+
+            const standardLinks = app.querySelectorAll('.standard-item a');
+            standardLinks.forEach(link => {
+                link.addEventListener('mouseover', () => link.style.color = linkColor);
+                link.addEventListener('mouseout', () => link.style.color = subjectColor);
+            });
         }
 
         function handleStandardRedirect(path, data) {
