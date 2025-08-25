@@ -567,9 +567,11 @@
                 backLink.href = '/';
                 backLink.className = 'back-link';
                 backLink.textContent = '‹ Back to All Subjects';
-                backLink.style.color = pageTextColor;
+                // Use a slightly lighter default color for the back link so it's less visually heavy
+                const backDefaultColor = (pageTextColor === '#333333') ? '#6b7280' : '#e5e7eb';
+                backLink.style.color = backDefaultColor;
                 backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
-                backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
+                backLink.addEventListener('mouseout', () => backLink.style.color = backDefaultColor);
                 header.appendChild(backLink);
 
                 const logo = createLogo('logo-small', pageTextColor);
