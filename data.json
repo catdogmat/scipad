@@ -3,7 +3,7 @@
     "title": "Biology Level 2",
     "subject": "Biology",
     "year": "2",
-    "color": "#FF5733",
+    "color": "#de0022",
     "pages": [
       {
         "id": "ext",
@@ -26,7 +26,7 @@
     "title": "Chemistry Level 2",
     "subject": "Chemistry",
     "year": "2",
-    "color": "#33C1FF",
+    "color": "#fad01b",
     "pages": [
       {
         "id": "ext",
@@ -44,7 +44,7 @@
     "title": "Physics Level 2",
     "subject": "Physics",
     "year": "2",
-    "color": "#8E44AD",
+    "color": "#00a9ec",
     "pages": [
       {
         "id": "ext",
