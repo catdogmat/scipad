@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,8 +39,9 @@
             border-radius: var(--border-radius);
             font-size: 1.1em;
         }
-        
-        h1, h2 {
+
+        h1,
+        h2 {
             text-align: center;
             color: var(--text-color);
         }
@@ -91,7 +93,8 @@
             text-decoration: none;
             color: var(--text-color);
             transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 5px solid; /* Will be colored by JS */
+            border-left: 5px solid;
+            /* Will be colored by JS */
         }
 
         .category-card:hover {
@@ -133,7 +136,7 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
@@ -141,10 +144,28 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+
+        #footer {
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            height: 60px;
+            width: 100%;
+            background: whitesmoke;
+            padding-bottom: 5px;
+            font-size: 0.8em;
+        }
     </style>
 </head>
+
 <body>
     <div id="app"></div>
+    <div id="footer">
+        <p style="text-align:center; color: black; line-height: 30px; margin:0;">This site is not affiliated with
+            Silverback Academic Media or the official Scipad books. We do not host or distribute Scipad content.
+            Scipad is a registered trademark of Silverback Academic Media and is referenced here under fair use for
+            identification purposes only. <a href="/about">Learn about our mission.</a></p>
+    </div>
 
     <script>
         const app = document.getElementById('app');
@@ -201,9 +222,9 @@
             function updateAndRender() {
                 const availableBasedOnYear = allCategories.filter(cat => activeFilters.year === 'All' || cat.year === activeFilters.year);
                 const availableBasedOnSubject = allCategories.filter(cat => activeFilters.subject === 'All' || cat.subject === activeFilters.subject);
-                
+
                 const availableSubjects = ['All', ...new Set(availableBasedOnYear.map(cat => cat.subject))];
-                
+
                 // *** THIS IS THE CORRECTED LINE ***
                 // First, create an array from the Set, then sort it.
                 const uniqueLevels = [...new Set(availableBasedOnSubject.map(cat => cat.year))].sort();
@@ -211,7 +232,7 @@
 
                 populateSelect(subjectSelect, availableSubjects, activeFilters.subject);
                 populateSelect(levelSelect, availableLevels, activeFilters.year);
-                
+
                 resultsContainer.innerHTML = '';
                 Object.entries(data).forEach(([key, category]) => {
                     const subjectMatch = activeFilters.subject === 'All' || category.subject === activeFilters.subject;
@@ -230,7 +251,7 @@
                     }
                 });
             }
-            
+
             function populateSelect(selectElement, options, selectedValue) {
                 const currentValue = selectElement.value;
                 selectElement.innerHTML = '';
@@ -246,7 +267,7 @@
                     selectElement.value = selectedValue;
                 }
             }
-            
+
             subjectSelect.addEventListener('change', (e) => {
                 activeFilters.subject = e.target.value;
                 updateAndRender();
@@ -282,7 +303,7 @@
 
             const categoryKey = parts[0];
             const pageId = parts.slice(1).join('.');
-            
+
             const category = data[categoryKey];
             if (category) {
                 const page = category.pages.find(p => p.id.toUpperCase() === pageId);
@@ -293,16 +314,16 @@
             }
             return false;
         }
-        
+
         async function main() {
             const data = await fetchData();
             if (!data) return;
 
             const path = window.location.pathname.slice(1).toUpperCase();
-            
+
             if (path.includes('.')) {
                 if (handleStandardRedirect(path, data)) {
-                    return; 
+                    return;
                 } else {
                     renderError(`The standard '${path}' could not be found.`);
                     renderHomePage(data);
@@ -327,4 +348,5 @@
         main();
     </script>
 </body>
+
 </html>
