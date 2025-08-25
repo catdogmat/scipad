@@ -1,111 +1,4 @@
 {
-  "B2": {
-    "title": "Biology Level 2",
-    "subject": "Biology",
-    "year": "2",
-    "color": "#de0022",
-    "pages": [
-      {
-        "id": "ext",
-        "title": "Biology Externals",
-        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology/Level%202%20Biology%20Externals.html"
-      },
-      {
-        "id": "int",
-        "title": "Biology Internals",
-        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(int)/Level%202%20Biology%20Internals.html"
-      },
-      {
-        "id": "4",
-        "title": "Biology 2.4 Micro",
-        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(micros)/Biology%202.4%20sciPAD%20Micro/Biology%202.4%20sciPAD%20Micro.html"
-      }
-    ]
-  },
-  "C2": {
-    "title": "Chemistry Level 2",
-    "subject": "Chemistry",
-    "year": "2",
-    "color": "#fad01b",
-    "pages": [
-      {
-        "id": "ext",
-        "title": "Chemistry Externals",
-        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/New%20chem/Level%202%20Chemistry%20(Externals).html"
-      },
-      {
-        "id": "int",
-        "title": "Chemistry Internals",
-        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(int)/Level%202%20Chemistry%20Internals.html"
-      }
-    ]
-  },
-  "P2": {
-    "title": "Physics Level 2",
-    "subject": "Physics",
-    "year": "2",
-    "color": "#00a9ec",
-    "pages": [
-      {
-        "id": "ext",
-        "title": "Physics Externals",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(Externals)/Level%202%20Physics%20(Externals).html#p=1"
-      },
-      {
-        "id": "int",
-        "title": "Physics Internals",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(internals)/Level%202%20Physics%20(Internals).html#p=1"
-      },
-      {
-        "id": "3",
-        "title": "Physics 2.3",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.3%20sciPAD%20Micro/Physics%202.3%20sciPAD%20Micro.html"
-      },
-      {
-        "id": "4",
-        "title": "Physics 2.4",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.4%20sciPAD%20Micro/Physics%202.4%20sciPAD%20Micro.html"
-      },
-      {
-        "id": "6",
-        "title": "Physics 2.6",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.6%20sciPAD%20Micro/Physics%202.6%20sciPAD%20Micro.html"
-      }
-    ]
-  },
-  "P3": {
-    "title": "Physics Level 3",
-    "subject": "Physics",
-    "year": "3",
-    "color": "#3f0f7b",
-    "pages": [
-      {
-        "id": "ext",
-        "title": "Physics Externals",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Physics%20(externals)/Level%203%20Physics%20(externals)%20sciPAD.html"
-      },
-      {
-        "id": "int",
-        "title": "Physics Internals",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Physics%20(internals)/Level%203%20Physics%20(internals).html"
-      },
-      {
-        "id": "3",
-        "title": "Physics 3.3",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Physics%203.3%20sciPAD%20Micro%20Answers/Physics%203.3%20sciPAD%20Micro%20Answers.html"
-      },
-      {
-        "id": "4",
-        "title": "Physics 3.4",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/physics%203.4%20scipad%20micro%20answers/Physics%203.4%20sciPAD%20Micro%20Answers.html"
-      },
-      {
-        "id": "6",
-        "title": "Physics 3.6",
-        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/physics%203.6%20scipad%20micro%20answers/Physics%203.6%20sciPAD%20Micro%20Answers.html"
-      }
-    ]
-  },
   "PESS1": {
     "title": "Physics, Earth and Space Science Level 1",
     "subject": "Physics, Earth and Space Science",
@@ -126,6 +19,204 @@
         "id": "4",
         "title": "Physics Earth and Space Science 1.4",
         "url": "https://scipad.co.nz/answers/PES1.4/PES1.4_answers.html"
+      }
+    ]
+  },
+  "B2": {
+    "title": "Biology Level 2",
+    "subject": "Biology",
+    "year": "2",
+    "color": "#de0022",
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Externals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology/Level%202%20Biology%20Externals.html"
+      },
+      {
+        "id": "int",
+        "title": "Internals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(int)/Level%202%20Biology%20Internals.html"
+      },
+      {
+        "id": "4",
+        "title": "2.4 | Cells",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(micros)/Biology%202.4%20sciPAD%20Micro/Biology%202.4%20sciPAD%20Micro.html"
+      },
+      {
+        "id": "5",
+        "title": "2.5 | Genetics",
+        "url": "https://cdn.scipad.co.nz/2014 Answers Flip book/Level 2 Biology (micros)/Biology 2.5 sciPAD Micro/Biology 2.5 sciPAD Micro.html#p=1 "
+      },
+      {
+        "id": "7",
+        "title": "2.7 | Gene Expression",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Biology%20(micros)/Biology%202.7%20sciPAD%20Micro/Biology%202.7%20sciPAD%20Micro.html#p=1"
+      }
+    ]
+  },
+  "C2": {
+    "title": "Chemistry Level 2",
+    "subject": "Chemistry",
+    "year": "2",
+    "color": "#fad01b",
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Chemistry Externals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/New%20chem/Level%202%20Chemistry%20(Externals).html"
+      },
+      {
+        "id": "int",
+        "title": "Chemistry Internals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(int)/Level%202%20Chemistry%20Internals.html"
+      },
+       {
+        "id": "4",
+        "title": "2.4 | Bonding & Structure",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.4%20sciPAD%20Micro/Chemistry%202.4%20sciPAD%20Micro.html#p=1"
+      },
+       {
+        "id": "5",
+        "title": "2.5 | Organic",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.5%20sciPAD%20Micro/Chemistry%202.5%20sciPAD%20Micro.html#p=1"
+      },
+       {
+        "id": "6",
+        "title": "2.6 | Reactivity",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Chemistry%20(micros)/Chemistry%202.6%20sciPAD%20Micro/Chemistry%202.6%20sciPAD%20Micro.html#p=1"
+      },
+    ]
+  },
+  "P2": {
+    "title": "Physics Level 2",
+    "subject": "Physics",
+    "year": "2",
+    "color": "#00a9ec",
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Physics Externals",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(Externals)/Level%202%20Physics%20(Externals).html#p=1"
+      },
+      {
+        "id": "int",
+        "title": "Physics Internals",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(internals)/Level%202%20Physics%20(Internals).html#p=1"
+      },
+      {
+        "id": "3",
+        "title": "2.3 | Waves",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.3%20sciPAD%20Micro/Physics%202.3%20sciPAD%20Micro.html"
+      },
+      {
+        "id": "4",
+        "title": "2.4 | Mechanics",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.4%20sciPAD%20Micro/Physics%202.4%20sciPAD%20Micro.html"
+      },
+      {
+        "id": "6",
+        "title": "2.6 | Electricity",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%202%20Physics%20(micros)/Physics%202.6%20sciPAD%20Micro/Physics%202.6%20sciPAD%20Micro.html"
+      }
+    ]
+  },
+  "B3": {
+    "title": "Biology Level 3",
+    "subject": "Biology",
+    "year": "3",
+    "color": "#08ac34"
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Externals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Biology%20%28externals%29/Level%203%20Biology%20%28externals%29.html#p=1"
+      },
+      {
+        "id": "int",
+        "title": "Internals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Biology%20%28internals%29/Level%203%20Biology%20%28internals%29.html"
+      },
+      {
+        "id": "3",
+        "title": "3.3 | Response to Environment",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Biology%20(micros)/Biology%203.3%20sciPAD%20micro/Biology%203.3%20sciPAD%20Micro.html#p=1"
+      },
+      {
+        "id": "5",
+        "title": "3.5 | Speciation",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Biology%20(micros)/Biology%203.5%20sciPAD%20micro/Biology%203.5%20sciPAD%20Micro.html#p=1"
+      },
+      {
+        "id": "6",
+        "title": "3.6 | Human Evolution",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Biology%20(micros)/Biology%203.6%20sciPAD%20micro/Biology%203.6%20sciPAD%20Micro.html#p=1"
+      }
+    ]
+  },
+   "C3": {
+    "title": "Chemistry Level 3",
+    "subject": "Chemistry",
+    "year": "3",
+    "color": "#f89c04"
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Externals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Chemistry/Externals/Level%203%20Chemistry%20(Externals).html#p=1"
+      },
+      {
+        "id": "int",
+        "title": "Internals",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Chemistry/Internals/Level%203%20Chemistry%20Internals.html#p=1"
+      },
+      {
+        "id": "4",
+        "title": "3.4 | Thermochemical",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Chemistry%20(micros)/Chemistry%203.4%20sciPAD%20Micro/Chemistry%203.4%20sciPAD%20Micro.html#p=1"
+      },
+      {
+        "id": "5",
+        "title": "3.5 | Organic",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Chemistry%20(micros)/Chemistry%203.5%20sciPAD%20Micro/Chemistry%203.5%20sciPAD%20Micro.html#p=1"
+      },
+      {
+        "id": "6",
+        "title": "3.6 | Equilibrium",
+        "url": "https://cdn.scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Chemistry%20(micros)/Chemistry%203.6%20sciPAD%20Micro/Chemistry%203.6%20sciPAD%20Micro.html#p=1"
+      }
+    ]
+  },
+  "P3": {
+    "title": "Physics Level 3",
+    "subject": "Physics",
+    "year": "3",
+    "color": "#3f0f7b",
+    "pages": [
+      {
+        "id": "ext",
+        "title": "Externals",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Physics%20(externals)/Level%203%20Physics%20(externals)%20sciPAD.html"
+      },
+      {
+        "id": "int",
+        "title": "Internals",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Level%203%20Physics%20(internals)/Level%203%20Physics%20(internals).html"
+      },
+      {
+        "id": "3",
+        "title": "3.3 | Waves",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/Physics%203.3%20sciPAD%20Micro%20Answers/Physics%203.3%20sciPAD%20Micro%20Answers.html"
+      },
+      {
+        "id": "4",
+        "title": "3.4 | Mechanics",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/physics%203.4%20scipad%20micro%20answers/Physics%203.4%20sciPAD%20Micro%20Answers.html"
+      },
+      {
+        "id": "6",
+        "title": "3.6 | Electricity",
+        "url": "https://scipad.co.nz/2014%20Answers%20Flip%20book/physics%203.6%20scipad%20micro%20answers/Physics%203.6%20sciPAD%20Micro%20Answers.html"
       }
     ]
   }
