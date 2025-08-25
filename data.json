@@ -1,23 +1,56 @@
 {
-  "PESS1": {
-    "title": "Physics, Earth and Space Science Level 1",
-    "subject": "Physics, Earth and Space Science",
+  "CB1": {
+    "title": "Chemistry / Biology Level 1",
+    "subject": "Chemistry / Biology",
     "year": "1",
     "color": "#000000",
     "pages": [
       {
+        "id": "1",
+        "title": "1.1 | Microorganisms",
+        "url": "https://scipad.co.nz/answers/CB1.1/CB1.1_answers.html#p=1"
+      },
+      {
         "id": "2",
-        "title": "Physics Earth and Space Science 1.2",
+        "title": "1.2 | Reactions",
+        "url": "https://scipad.co.nz/answers/CB1.2/CB1.2_answers.html#p=1"
+      },
+      {
+        "id": "3",
+        "title": "1.3 | Genetics",
+        "url": "https://scipad.co.nz/answers/CB1.3/CB1.3_answers.html#p=1"
+      },
+      {
+        "id": "4",
+        "title": "1.4 | Chemical Properties",
+        "url": "https://scipad.co.nz/answers/CB1.4/CB1.4_answers.html#p=1"
+      }
+    ]
+  },
+  "PESS1": {
+    "title": "Physics / ESS Level 1",
+    "subject": "Physics / ESS",
+    "year": "1",
+    "color": "#000000",
+    "pages": [
+      {
+        "id": "1",
+        "title": "1.1 | Human-Induced Changes",
+        "url": "https://scipad.co.nz/answers/PES1.1/PESS1.1_answers.html#p=1"
+      },
+      {
+        "id": "2",
+        "title": "1.2 | Physical Phenomena",
         "url": "https://scipad.co.nz/answers/PES1.2/PES1.2_answers.html"
       },
       {
         "id": "3",
-        "title": "Physics Earth and Space Science 1.3",
+        "title": "1.3 | Earth, Moon, and Sun",
         "url": "https://scipad.co.nz/answers/PES1.3/PES1.3_answers.html"
       },
       {
         "id": "4",
-        "title": "Physics Earth and Space Science 1.4",
+        "title": "1.4 | Energy",
         "url": "https://scipad.co.nz/answers/PES1.4/PES1.4_answers.html"
       }
     ]
