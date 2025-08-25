@@ -76,7 +76,7 @@
         }
 
         .filters label {
-             /* FONT CHANGE: Heavier weight for titles */
+            /* FONT CHANGE: Heavier weight for titles */
             font-weight: 900;
         }
 
@@ -87,7 +87,7 @@
             border: 1px solid #ced4da;
             background-color: #fff;
             cursor: pointer;
-             /* FONT CHANGE: Ensure dropdowns use the new font */
+            /* FONT CHANGE: Ensure dropdowns use the new font */
             font-family: 'proxima-nova', sans-serif;
             font-weight: 500;
         }
@@ -165,9 +165,10 @@
             background: whitesmoke;
             font-size: 0.8em;
             padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
             transition: background-color 0.5s ease;
         }
+
         #footer p {
             text-align: center;
             color: black;
@@ -176,6 +177,7 @@
             padding: 0 15px;
             transition: color 0.5s ease;
         }
+
         #footer a {
             color: #007bff;
             transition: color 0.5s ease;
@@ -282,6 +284,15 @@
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
+            // Add logo above filters
+            const logo = document.createElement('img');
+            logo.src = 'logo.png';
+            logo.alt = 'Logo';
+            logo.style.display = 'block';
+            logo.style.margin = '0 auto 30px auto';
+            logo.style.maxWidth = '120px';
+            logo.style.borderRadius = '16px';
+            app.appendChild(logo);
             const filterContainer = document.createElement('div');
             filterContainer.className = 'filters';
             filterContainer.innerHTML = `
@@ -389,7 +400,7 @@
             }
             return false;
         }
-        
+
         async function main() {
             const data = await fetchData();
             if (!data) return;
