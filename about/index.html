@@ -22,6 +22,7 @@
         body {
             font-family: 'proxima-nova', sans-serif;
             font-weight: 500;
+            font-feature-settings: "ss04" on;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -40,10 +41,18 @@
         h1 {
             text-align: center;
         }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
+    <a href="/" class="back-link" style="color: ${pageTextColor};">‹ Back to All Subjects</a>
     <h1>About Us</h1>
     <p>Welcome to sciPAD Answers! We are a small team of students who made this site to help others view answers after
         phones were banned.</p>
