@@ -138,7 +138,6 @@
         .category-card {
             background-color: var(--card-bg);
             padding: 20px;
-            padding-bottom: 10px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-decoration: none;
@@ -191,6 +190,33 @@
             text-decoration: none;
             transition: color 0.2s;
         }
+        
+        /* --- NEW INFO BOX STYLES --- */
+        .info-box {
+            background-color: var(--card-bg);
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .info-box h3 {
+            margin-top: 0;
+            font-weight: 900;
+        }
+        .info-box p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .info-box strong {
+            font-weight: 900;
+        }
+        .info-box code {
+            background-color: #f1f1f1;
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-family: monospace;
+        }
+        /* --- END INFO BOX STYLES --- */
 
         #footer {
             position: fixed;
@@ -298,81 +324,13 @@
             return "#" + r + g + b;
         }
 
-        /**
-         * Generates a link color that contrasts well with the card/footer background.
-         * @param {string} baseHex - The subject's main color.
-         * @param {string} cardBgHex - The background color of the card/footer (#FFFFFF or #333333).
-         * @returns {string} A new hex color for links.
-         */
         function generateLinkColor(baseHex, cardBgHex) {
-            // Robustness: fallback color
-            const fallbackDark = '#2563eb'; // good, medium blue for light backgrounds
-            const fallbackLight = '#93c5fd'; // lighter blue for dark backgrounds
-
-            if (!baseHex) return fallbackDark;
-            // ensure cardBgHex is a hex; if not, default to white
-            if (!cardBgHex || cardBgHex[0] !== '#') cardBgHex = '#ffffff';
-
-            // helpers
-            function hexToRgb(hex) {
-                if (!hex) return null;
-                if (hex.length === 4) {
-                    return {
-                        r: parseInt(hex[1] + hex[1], 16),
-                        g: parseInt(hex[2] + hex[2], 16),
-                        b: parseInt(hex[3] + hex[3], 16)
-                    };
-                }
-                return {
-                    r: parseInt(hex.substr(1, 2), 16),
-                    g: parseInt(hex.substr(3, 2), 16),
-                    b: parseInt(hex.substr(5, 2), 16)
-                };
-            }
-
-            function relLuminance({ r, g, b }) {
-                // convert sRGB 0..255 to linearized 0..1
-                const srgb = [r, g, b].map(v => v / 255).map(c => (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
-                return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
-            }
-
-            function contrastRatio(hex1, hex2) {
-                const rgb1 = hexToRgb(hex1);
-                const rgb2 = hexToRgb(hex2);
-                if (!rgb1 || !rgb2) return 1;
-                const L1 = relLuminance(rgb1);
-                const L2 = relLuminance(rgb2);
-                const lighter = Math.max(L1, L2);
-                const darker = Math.min(L1, L2);
-                return (lighter + 0.05) / (darker + 0.05);
-            }
-
-            try {
-                const [h, sRaw] = hexToHsl(baseHex);
-                // Choose a moderate saturation (avoid neon) and a hue moved away from the base
-                const sat = Math.min(65, Math.max(38, Math.round(sRaw)));
-                const hue = (h + 160) % 360; // move to a distinct but related hue
-
-                // Determine whether card background is light or dark (use existing helper)
-                const cardBgIsLight = getTextColorForBg(cardBgHex) === '#333333';
-
-                // Start lightness values: for light card bg, link should be darker; for dark card bg, link should be lighter
-                let light = cardBgIsLight ? 28 : 70;
-
-                // Iterate to find a lightness that meets WCAG contrast >= 4.5:1 (normal text)
-                const targetContrast = 4.5;
-                for (let i = 0; i < 12; i++) {
-                    const candidateHex = hslToHex(hue, sat, Math.round(light));
-                    if (contrastRatio(candidateHex, cardBgHex) >= targetContrast) return candidateHex;
-                    // Adjust lightness towards better contrast
-                    if (cardBgIsLight) light -= 6; else light += 6;
-                }
-
-                // If iterative search failed, fall back to safe blues depending on bg
-                return cardBgIsLight ? fallbackDark : fallbackLight;
-            } catch (e) {
-                return fallbackDark;
-            }
+            const [h, s, l] = hexToHsl(baseHex);
+            const isCardBgLight = getTextColorForBg(cardBgHex) === '#333333';
+            const newHue = (h + 140) % 360;
+            const newSaturation = 85;
+            const newLightness = isCardBgLight ? 45 : 75;
+            return hslToHex(newHue, newSaturation, newLightness);
         }
 
         function renderError(mainContainer, message) {
@@ -394,18 +352,10 @@
             document.body.style.backgroundColor = 'var(--bg-color)';
             footer.style.backgroundColor = 'whitesmoke';
             footerText.style.color = 'black';
-            // dynamic footer link color that contrasts with the footer background
-            const homeLinkColor = generateLinkColor('#007bff', 'whitesmoke');
-            footerLink.style.color = homeLinkColor;
+            footerLink.style.color = '#007bff';
             footerLink.style.textDecoration = 'none';
-            footerLink.onmouseover = () => {
-                footerLink.style.textDecoration = 'underline';
-                footerLink.style.color = generateLinkColor('#007bff', '#e0e7ff');
-            };
-            footerLink.onmouseout = () => {
-                footerLink.style.textDecoration = 'none';
-                footerLink.style.color = homeLinkColor;
-            };
+            footerLink.onmouseover = () => footerLink.style.textDecoration = 'underline';
+            footerLink.onmouseout = () => footerLink.style.textDecoration = 'none';
 
             const filterContainer = document.createElement('div');
             filterContainer.className = 'filters';
@@ -448,6 +398,7 @@
                         card.style.borderLeftColor = category.color;
                         card.innerHTML = `
                             <h3>${category.title}</h3>
+                            <p>${category.subject} - Level ${category.year}</p>
                         `;
                         resultsContainer.appendChild(card);
                     }
@@ -474,6 +425,16 @@
                 updateAndRender();
             });
             updateAndRender();
+
+            // --- ADD INFO BOX ---
+            const infoBox = document.createElement('div');
+            infoBox.className = 'info-box';
+            infoBox.innerHTML = `
+                <h3>How to use scip.ad:</h3>
+                <p><strong>Students:</strong> Select your class from this page and access the answers.</p>
+                <p><strong>Teachers:</strong> Give your students the short link for your standard. In most cases this will be the standard number, such as <code>scip.ad/PES1.4</code> or <code>scip.ad/P3.3</code>. For internal and external books, the short link is <code>scip.ad/B2.ext</code> or <code>scip.ad/C3.int</code>.</p>
+            `;
+            mainContainer.appendChild(infoBox);
         }
 
         function renderCategoryPage(mainContainer, categoryData) {
@@ -500,7 +461,7 @@
                     `).join('')}
                 </ul>
             `;
-
+            
             const standardLinks = mainContainer.querySelectorAll('.standard-item a');
             standardLinks.forEach(link => {
                 link.addEventListener('mouseover', () => link.style.color = linkColor);
@@ -523,10 +484,10 @@
             }
             return false;
         }
-
+        
         async function main() {
             const path = window.location.pathname.slice(1).toUpperCase();
-
+            
             app.innerHTML = '<header class="app-header"></header><main></main>';
             const header = app.querySelector('header');
             const mainContent = app.querySelector('main');
@@ -548,7 +509,7 @@
                 }
                 return;
             }
-
+            
             if (path === '') {
                 header.classList.add('header-center');
                 header.appendChild(createLogo('logo-large', 'var(--text-color)'));
@@ -567,14 +528,11 @@
                 backLink.href = '/';
                 backLink.className = 'back-link';
                 backLink.textContent = '‹ Back to All Subjects';
-                // Use black or white depending on page text/background contrast so the back link is always clear
-                const backDefaultColor = (pageTextColor === '#333333') ? '#000000' : '#ffffff';
-                const backHoverColor = (pageTextColor === '#333333') ? '#111827' : '#f8fafc';
-                backLink.style.color = backDefaultColor;
-                backLink.addEventListener('mouseover', () => backLink.style.color = backHoverColor);
-                backLink.addEventListener('mouseout', () => backLink.style.color = backDefaultColor);
+                backLink.style.color = pageTextColor;
+                backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
+                backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
                 header.appendChild(backLink);
-
+                
                 const logo = createLogo('logo-small', pageTextColor);
                 logo.addEventListener('mouseover', () => logo.style.color = linkColor);
                 logo.addEventListener('mouseout', () => logo.style.color = pageTextColor);
