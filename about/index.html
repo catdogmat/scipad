@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | sciPAD Answers</title>
-    <!-- Adobe Fonts - should be fine here -->
+    <!-- Adobe Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ctk0oqa.css">
     <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/635c80d725.js" crossorigin="anonymous"></script>
@@ -27,8 +27,50 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
+            padding-bottom: 80px; /* Space for footer */
             transition: background-color 0.5s ease;
+        }
 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER STYLES --- */
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 48px;
+            justify-content: space-between;
+        }
+
+        .logodiv a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .l1 {
+            font-weight: 900;
+        }
+
+        .l2 {
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .back-link:hover {
+            color: var(--primary-color);
         }
 
         h1,
@@ -41,38 +83,77 @@
         h1 {
             text-align: center;
         }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            font-weight: 900;
-            text-decoration: none;
+        
+        a {
+            color: var(--primary-color);
         }
+
+        /* --- FOOTER STYLES --- */
+        #footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: whitesmoke;
+            font-size: 0.8em;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        #footer p {
+            text-align: center;
+            color: black;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0 15px;
+        }
+        #footer a {
+            color: #007bff;
+        }
+        #footer a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 
 <body>
-    <a href="/" class="back-link" style="color: ${pageTextColor};">‹ Back to All Subjects</a>
-    <h1>About Us</h1>
-    <p>Welcome to sciPAD Answers! We are a small team of students who made this site to help others view answers after
-        phones were banned.</p>
-    <p>Our mission is to provide a free, easy-to-use platform for students to access sciPAD answers and resources.</p>
-    <p>We are not affiliated with Silverback Academic Media or the official sciPAD books. This is a student-run project.
-    </p>
-    <p>If you have any questions or feedback, please feel free to <a href="mailto:info@scip.ad">contact us</a>.</p>
+    <div class="container">
+        <header class="app-header">
+            <a href="/" class="back-link">‹ Back to All Subjects</a>
+            <div class="logodiv">
+                <a href="/"><span class="l1 logo">sciPad</span><span class="l2 logo"> answers</span></a>
+            </div>
+        </header>
 
-    <h2>Resources we find cool:</h2>
+        <main>
+            <h1>About Us</h1>
+            <p>Welcome to sciPAD Answers! We are a small team of students who made this site to help others view answers after
+                phones were banned.</p>
+            <p>Our mission is to provide a free, easy-to-use platform for students to access sciPAD answers and resources.</p>
+            <p>We are not affiliated with Silverback Academic Media or the official sciPAD books. This is a student-run project.
+            </p>
+            <p>If you have any questions or feedback, please feel free to <a href="mailto:info@scip.ad">contact us</a>.</p>
 
-    <h3><a href="https://nzqa.toasting.me/">NZQA Past Papers</a></h3>
-    <p>An amazing site dedicated to hosting past papers. Great for study.</p>
+            <h2>Resources we find cool:</h2>
 
-    <h3><a href="https://www.nobraintoosmall.co.nz/">No Brain Too Small</a></h3>
-    <p>A site with free resources for a variety of subjects, including science. Very good notes and revision documents.
-    </p>
+            <h3><a href="https://nzqa.toasting.me/">NZQA Past Papers</a></h3>
+            <p>An amazing site dedicated to hosting past papers. Great for study.</p>
 
-    <h3><a href="https://www.khanacademy.org/">Khan Academy</a></h3>
-    <p>You know it, you love it. An amazing resource full of videos and text.</p>
+            <h3><a href="https://www.nobraintoosmall.co.nz/">No Brain Too Small</a></h3>
+            <p>A site with free resources for a variety of subjects, including science. Very good notes and revision documents.
+            </p>
 
+            <h3><a href="https://www.khanacademy.org/">Khan Academy</a></h3>
+            <p>You know it, you love it. An amazing resource full of videos and text.</p>
+        </main>
+    </div>
+
+    <div id="footer">
+        <p>This site is not affiliated with
+            Silverback Academic Media or the official Scipad books. We do not host or distribute Scipad content.
+            Scipad is a registered trademark of Silverback Academic Media and is referenced here under fair use for
+            identification purposes only. <a href="/about">Learn about our mission.</a></p>
+    </div>
 </body>
 
 </html>
