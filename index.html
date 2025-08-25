@@ -60,7 +60,7 @@
         }
         
         .logo {
-            transition: color 0.5s ease;
+            transition: color 0.2s ease; /* Faster transition for hover */
         }
         
         .logo-large {
@@ -212,11 +212,11 @@
         }
         #footer a {
             color: #007bff;
-            text-decoration: none; /* Remove underline globally */
+            text-decoration: none;
             transition: color 0.2s ease;
         }
         #footer a:hover {
-            text-decoration: underline; /* Add back for homepage */
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -322,10 +322,9 @@
             footer.style.backgroundColor = 'whitesmoke';
             footerText.style.color = 'black';
             footerLink.style.color = '#007bff';
-            footerLink.style.textDecoration = 'none'; // Ensure no underline
-            footerLink.onmouseover = () => footerLink.style.textDecoration = 'underline'; // Add underline on hover
-            footerLink.onmouseout = () => footerLink.style.textDecoration = 'none'; // Remove on mouseout
-
+            footerLink.style.textDecoration = 'none';
+            footerLink.onmouseover = () => footerLink.style.textDecoration = 'underline';
+            footerLink.onmouseout = () => footerLink.style.textDecoration = 'none';
             const existingError = document.getElementById('error-container');
             app.innerHTML = '';
             if (existingError) app.appendChild(existingError);
@@ -410,13 +409,10 @@
             document.body.style.backgroundColor = subjectColor;
             footer.style.backgroundColor = cardAndFooterBg;
             footerText.style.color = subjectColor;
-            footerLink.style.color = subjectColor; // Set default color to subject color
-            footerLink.style.textDecoration = 'none'; // Ensure no underline
-
-            // **NEW**: Add hover events for footer link
-            footerLink.onmouseover = () => footerLink.style.color = linkColor;
-            footerLink.onmouseout = () => footerLink.style.color = subjectColor;
-
+            footerLink.style.color = linkColor; // Set default color to the vibrant link color
+            footerLink.style.textDecoration = 'none';
+            footerLink.onmouseover = null; // Remove JS hover effects for footer link
+            footerLink.onmouseout = null;
 
             app.innerHTML = ''; 
 
@@ -428,7 +424,8 @@
             backLink.textContent = '‹ Back to All Subjects';
             backLink.style.color = pageTextColor;
             header.appendChild(backLink);
-            header.appendChild(createLogo('logo-small', pageTextColor));
+            const logo = createLogo('logo-small', pageTextColor);
+            header.appendChild(logo);
             app.appendChild(header);
 
             const contentDiv = document.createElement('div');
@@ -443,6 +440,10 @@
                 </ul>
             `;
             app.appendChild(contentDiv);
+
+            // --- HOVER EVENT LISTENERS FOR HEADER & LINKS ---
+            logo.addEventListener('mouseover', () => logo.style.color = linkColor);
+            logo.addEventListener('mouseout', () => logo.style.color = pageTextColor);
 
             backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
             backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
