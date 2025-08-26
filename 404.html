@@ -34,6 +34,20 @@
             transition: background-color 0.5s ease;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        main {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
         #app {
             max-width: 900px;
             margin: 0 auto;
@@ -190,7 +204,7 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        
+
         /* --- NEW INFO BOX STYLES --- */
         .info-box {
             background-color: var(--card-bg);
@@ -199,23 +213,28 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
         }
+
         .info-box h3 {
             margin-top: 0;
             font-weight: 900;
         }
+
         .info-box p {
             line-height: 1.6;
             margin-bottom: 10px;
         }
+
         .info-box strong {
             font-weight: 900;
         }
+
         .info-box code {
             background-color: #f1f1f1;
             border-radius: 4px;
             padding: 2px 5px;
             font-family: monospace;
         }
+
         /* --- END INFO BOX STYLES --- */
 
         #footer {
@@ -462,7 +481,7 @@
                     `).join('')}
                 </ul>
             `;
-            
+
             const standardLinks = mainContainer.querySelectorAll('.standard-item a');
             standardLinks.forEach(link => {
                 link.addEventListener('mouseover', () => link.style.color = linkColor);
@@ -485,10 +504,10 @@
             }
             return false;
         }
-        
+
         async function main() {
             const path = window.location.pathname.slice(1).toUpperCase();
-            
+
             app.innerHTML = '<header class="app-header"></header><main></main>';
             const header = app.querySelector('header');
             const mainContent = app.querySelector('main');
@@ -510,7 +529,7 @@
                 }
                 return;
             }
-            
+
             if (path === '') {
                 header.classList.add('header-center');
                 header.appendChild(createLogo('logo-large', 'var(--text-color)'));
@@ -533,7 +552,7 @@
                 backLink.addEventListener('mouseover', () => backLink.style.color = linkColor);
                 backLink.addEventListener('mouseout', () => backLink.style.color = pageTextColor);
                 header.appendChild(backLink);
-                
+
                 const logo = createLogo('logo-small', pageTextColor);
                 logo.addEventListener('mouseover', () => logo.style.color = linkColor);
                 logo.addEventListener('mouseout', () => logo.style.color = pageTextColor);
