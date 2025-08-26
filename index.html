@@ -487,6 +487,10 @@
             const pageTextColor = getTextColorForBg(subjectColor);
             const cardAndFooterBg = (pageTextColor === '#FFFFFF') ? '#FFFFFF' : '#333333';
             const linkColor = generateLinkColor(subjectColor, cardAndFooterBg);
+            sessionStorage.setItem("subjectColor", subjectColor);
+            sessionStorage.setItem("cardAndFooterBg", cardAndFooterBg);
+            sessionStorage.setItem("subjectColor", subjectColor);
+            sessionStorage.setItem("linkColor", linkColor);
 
             document.body.style.backgroundColor = subjectColor;
             footer.style.backgroundColor = cardAndFooterBg;
@@ -558,6 +562,25 @@
             if (path === '') {
                 header.classList.add('header-center');
                 header.appendChild(createLogo('logo-large', 'var(--text-color)'));
+
+                const previousColor = sessionStorage.getItem('subjectColor');
+
+                if (previousColor) {
+                    // 1. Instantly set the background to the previous page's color.
+                    document.body.style.backgroundColor = previousColor;
+
+                    // 2. After a tiny delay, transition back to the default color.
+                    // This gives the browser time to paint the 'previousColor' first.
+                    setTimeout(() => {
+                        document.body.style.backgroundColor = 'var(--bg-color)';
+                    }, 10); // 10 milliseconds is enough.
+
+                    // 3. Clean up session storage so this doesn't run again on a page refresh.
+                    sessionStorage.removeItem('subjectColor');
+                    sessionStorage.removeItem('cardAndFooterBg');
+                    sessionStorage.removeItem('linkColor');
+                }
+
                 renderHomePage(mainContent, data);
                 return;
             }
